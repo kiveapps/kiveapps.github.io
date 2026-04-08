@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="description" content="LifeMaster AI Privacy Policy — we collect nothing. Your data stays on your phone.">
+<title>Privacy Policy — LifeMaster AI</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+:root{
+  --bg:#0A1A14;
+  --surface:rgba(15,32,22,0.82);
+  --border:rgba(77,182,172,0.12);
+  --teal:#4DB6AC;
+  --gold:#F5C842;
+  --text:#C2DDD6;
+  --text2:#7FA99E;
+  --text3:#3E6558;
+  --white:#FFFFFF;
+  --green-soft:rgba(77,182,172,0.07);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;-webkit-font-smoothing:antialiased;
+}
+
+/* ── AMBIENT ── */
+.bg-glow{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 70% 50% at 50% -5%, rgba(77,182,172,0.06) 0%, transparent 70%);
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:52px 20px 40px;
+  border-bottom:1px solid var(--border);
+  background:rgba(12,26,18,0.6);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.icon-wrap{
+  position:relative;display:inline-block;
+  margin-bottom:18px;
+}
+.app-icon{
+  width:72px;height:72px;border-radius:18px;
+  display:block;
+  background:linear-gradient(145deg,#112018,#060E08);
+  animation:iconFloat 7s ease-in-out infinite;
+}
+@keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hero-tag{font-size:12px;font-weight:600;color:var(--teal);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
+.hero h1{
+  font-size:clamp(26px,6vw,34px);font-weight:700;
+  color:var(--white);letter-spacing:-.4px;margin-bottom:8px;
+}
+.hero-meta{font-size:12px;color:var(--text3)}
+
+/* ── PAGE ── */
+.page{
+  position:relative;z-index:1;
+  max-width:640px;margin:0 auto;
+  padding:32px 20px 80px;
+}
+
+/* ── SUMMARY ── */
+.summary{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;padding:22px;
+  margin-bottom:32px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.sum-title{
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:var(--teal);margin-bottom:16px;
+}
+.sum-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(77,182,172,0.08);
+  font-size:14px;color:var(--text);
+}
+.sum-item:last-child{border-bottom:none}
+.sum-tick{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(77,182,172,0.12);
+  border:1px solid rgba(77,182,172,0.22);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.sum-tick svg{width:11px;height:11px}
+
+/* ── SECTIONS ── */
+.section{margin-bottom:32px}
+.section-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.section-icon{
+  width:34px;height:34px;border-radius:10px;
+  background:rgba(77,182,172,0.08);
+  border:1px solid rgba(77,182,172,0.14);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.section-icon svg{width:16px;height:16px;color:var(--teal)}
+h2{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.2px}
+p{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:10px}
+p:last-child{margin-bottom:0}
+
+/* ── PERMISSION ITEMS ── */
+.perm-list{display:flex;flex-direction:column;gap:10px}
+.perm-item{
+  background:rgba(12,26,18,0.5);
+  border:1px solid rgba(77,182,172,0.1);
+  border-radius:14px;padding:14px 16px;
+}
+.perm-name{
+  font-size:13px;font-weight:600;color:var(--text);
+  margin-bottom:5px;display:flex;align-items:center;gap:7px;
+}
+.opt-badge{
+  font-size:10px;font-weight:700;
+  background:rgba(77,182,172,0.1);
+  color:var(--teal);border:1px solid rgba(77,182,172,0.18);
+  padding:2px 7px;border-radius:20px;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+.perm-desc{font-size:13px;color:var(--text2);line-height:1.65;margin:0}
+
+/* ── HIGHLIGHT CARD ── */
+.highlight{
+  background:rgba(77,182,172,0.06);
+  border:1px solid rgba(77,182,172,0.14);
+  border-radius:14px;padding:16px;
+  margin-top:12px;
+}
+.highlight p{font-size:14px;color:var(--text2);margin:0}
+
+/* ── CONTACT ── */
+.contact-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;padding:20px;
+  text-align:center;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.contact-card p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:14px}
+.email-link{
+  display:inline-block;
+  background:rgba(77,182,172,0.1);
+  border:1px solid rgba(77,182,172,0.22);
+  border-radius:12px;padding:12px 24px;
+  font-size:14px;font-weight:600;color:var(--teal);
+  text-decoration:none;transition:all .2s;
+}
+.email-link:hover{background:rgba(77,182,172,0.18)}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;
+  padding:28px 0 0;margin-top:32px;
+  border-top:1px solid var(--border);
+  font-size:12px;color:var(--text3);
+  line-height:2.4;
+}
+footer a{color:var(--teal);text-decoration:none}
+footer a:hover{opacity:.8}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.fi.show{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(min-width:600px){
+  .hero{padding:64px 24px 44px}
+  .page{padding:40px 32px 80px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- HERO -->
+<div class="hero fi">
+  <div class="icon-wrap">
+    <img class="app-icon" src="../icon.png" alt="LifeMaster AI"
+      onerror="this.style.opacity='0.5'">
+  </div>
+  <p class="hero-tag">LifeMaster AI</p>
+  <h1>Privacy Policy</h1>
+  <p class="hero-meta">Last updated: April 2026 &nbsp;·&nbsp; Kive</p>
+</div>
+
+<div class="page">
+
+  <!-- SUMMARY -->
+  <div class="summary fi">
+    <p class="sum-title">The simple truth</p>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      We collect nothing about you — ever
+    </div>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      The app never connects to the internet
+    </div>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      No account or sign-up of any kind
+    </div>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      Your data lives only on your phone
+    </div>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      No ads. No tracking. No third-party anything.
+    </div>
+  </div>
+
+  <!-- WHAT WE COLLECT -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      </div>
+      <h2>What do we know about you?</h2>
+    </div>
+    <p>Nothing. Truly. We don't know your name, your age, your location, or how you use the app. There is no registration, no sign-in, and no profile to create. You open the app and it just works — completely anonymously.</p>
+  </div>
+
+  <!-- DATA STORAGE -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 7V5a2 2 0 0 0-4 0v2"/></svg>
+      </div>
+      <h2>Where does your data live?</h2>
+    </div>
+    <p>Everything you add to the app — your goals, habits, daily scores, journal entries, moods, health logs — is saved directly on your phone. It never travels anywhere. It never reaches us. Because we have no servers for it to reach.</p>
+    <div class="highlight">
+      <p>Your personal journey stays personal. No one — not us, not any third party — can ever see what you've written or tracked in LifeMaster AI.</p>
+    </div>
+  </div>
+
+  <!-- INTERNET -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h2>Does the app go online?</h2>
+    </div>
+    <p>Never. LifeMaster AI is a fully offline app. It works without Wi-Fi, without mobile data, even in airplane mode. It will never make any kind of internet connection — not when you open it, not in the background, not ever.</p>
+  </div>
+
+  <!-- PERMISSIONS -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h2>Why does the app need certain permissions?</h2>
+    </div>
+    <p style="margin-bottom:14px">Some features need your phone's permission to work. Here's exactly what each one does:</p>
+    <div class="perm-list">
+      <div class="perm-item">
+        <p class="perm-name">Notifications</p>
+        <p class="perm-desc">Sends you habit reminders, focus session alerts, and your evening reflection prompts at the times you choose. Everything is created on your phone — nothing is sent anywhere.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name">Vibration</p>
+        <p class="perm-desc">Gives you a gentle physical nudge when you complete a task or reach a milestone. Nothing is collected.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name">Restart after reboot</p>
+        <p class="perm-desc">Makes sure your reminders keep working after you restart your phone. No data is involved.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name">Background timer</p>
+        <p class="perm-desc">Keeps your Focus Timer running while you use other apps, so your session doesn't stop the moment you switch screens.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name"><span>Screen time insights</span> <span class="opt-badge">Optional</span></p>
+        <p class="perm-desc">If you choose to enable this, the app shows which apps distract you most. This is based entirely on data your phone already has — it never goes anywhere else. You can use the app fully without enabling this.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name"><span>Focus Shield</span> <span class="opt-badge">Optional</span></p>
+        <p class="perm-desc">A gentle pause that appears when you open a distracting app you've chosen to limit. Completely optional, completely local to your device. Turn it on or off any time from Settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKUPS -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.44"/></svg>
+      </div>
+      <h2>What about backups?</h2>
+    </div>
+    <p>The app lets you create a backup of all your data. It's protected with a password that only you know — we can never access it. The backup file is saved on your phone or wherever you choose to store it. It never goes to any cloud service automatically.</p>
+  </div>
+
+  <!-- CHILDREN -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h2>Is LifeMaster AI for children?</h2>
+    </div>
+    <p>LifeMaster AI is designed for people aged 13 and above. Some features — like the addiction recovery tools and urge management system — deal with mature, real-life challenges and are not meant for young children.</p>
+  </div>
+
+  <!-- UPDATES -->
+  <div class="section fi">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+      <h2>If this policy changes</h2>
+    </div>
+    <p>We'll update this page with a new date at the top. We'll never introduce data collection without being completely transparent about it.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-card fi">
+    <p>Have a question about your privacy?<br>We'll get back to you within 48 hours.</p>
+    <a class="email-link" href="mailto:kive.apps@gmail.com">kive.apps@gmail.com</a>
+  </div>
+
+  <footer class="fi">
+    <p>LifeMaster AI &nbsp;·&nbsp; Kive</p>
+    <p><a href="../support">Support the Developer</a></p>
+    <p>&copy; 2026 Kive. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}
+  });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
