@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Support LifeMaster AI — built free, kept free forever.">
+<title>Support — LifeMaster AI</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+:root{
+  --bg:#0A1A14;
+  --surface:rgba(15,32,22,0.82);
+  --border:rgba(77,182,172,0.13);
+  --teal:#4DB6AC;
+  --teal-dk:#38A09A;
+  --gold:#F5C842;
+  --gold2:#FFD700;
+  --text:#C2DDD6;
+  --text2:#7FA99E;
+  --text3:#3E6558;
+  --white:#FFFFFF;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── AMBIENT BG ── */
+.bg-glow{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(77,182,172,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 110%, rgba(245,200,66,0.05) 0%, transparent 70%);
+  animation:bgShift 12s ease-in-out infinite alternate;
+}
+@keyframes bgShift{
+  0%{opacity:.7}
+  100%{opacity:1}
+}
+
+/* ── PARTICLES ── */
+.pts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.pt{
+  position:absolute;border-radius:50%;
+  animation:rise linear infinite;
+  will-change:transform,opacity;
+}
+@keyframes rise{
+  0%{transform:translateY(105vh) scale(0);opacity:0}
+  8%{opacity:1}
+  92%{opacity:.6}
+  100%{transform:translateY(-5vh) scale(1);opacity:0}
+}
+
+/* ── LAYOUT ── */
+.page{
+  position:relative;z-index:1;
+  max-width:450px;
+  margin:0 auto;
+  padding:0 20px 72px;
+}
+
+/* ── HERO ── */
+.hero{
+  text-align:center;
+  padding:56px 0 32px;
+}
+.icon-ring{
+  position:relative;
+  display:inline-flex;
+  align-items:center;justify-content:center;
+  width:100px;height:100px;
+  margin-bottom:24px;
+}
+.icon-ring::before{
+  content:'';position:absolute;inset:-4px;
+  border-radius:28px;
+  background:conic-gradient(from 180deg, var(--teal), var(--gold2), var(--teal));
+  opacity:0;
+  filter:blur(6px);
+  animation:haloSpin 4s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes haloSpin{
+  0%,100%{opacity:0;transform:rotate(0deg) scale(1)}
+  50%{opacity:.3;transform:rotate(180deg) scale(1.05)}
+}
+.app-icon{
+  width:100px;height:100px;
+  border-radius:24px;
+  display:block;
+  animation:iconFloat 7s ease-in-out infinite;
+  background:linear-gradient(145deg,#112018,#060E08);
+}
+@keyframes iconFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+.app-name{
+  font-size:clamp(24px,6vw,30px);
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:-.5px;
+  margin-bottom:6px;
+  line-height:1.1;
+}
+.app-tag{
+  font-size:13px;
+  font-weight:500;
+  color:var(--teal);
+  margin-bottom:5px;
+  letter-spacing:.01em;
+}
+.app-chips{
+  display:inline-flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:6px;
+}
+.chip{
+  font-size:11px;
+  color:var(--text3);
+  background:rgba(77,182,172,0.06);
+  border:1px solid rgba(77,182,172,0.1);
+  border-radius:20px;
+  padding:3px 10px;
+  letter-spacing:.03em;
+}
+
+/* ── MESSAGE ── */
+.msg{
+  text-align:center;
+  padding:8px 8px 28px;
+}
+.msg-head{
+  font-size:clamp(20px,5vw,24px);
+  font-weight:600;
+  color:var(--white);
+  line-height:1.35;
+  letter-spacing:-.3px;
+  margin-bottom:12px;
+}
+.msg-body{
+  font-size:15px;
+  color:var(--text2);
+  line-height:1.8;
+}
+
+/* ── CARD ── */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:12px;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.card-lbl{
+  font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.11em;
+  color:var(--teal);margin-bottom:15px;
+}
+
+/* ── AMOUNTS ── */
+.amt-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+.amt-btn{
+  background:rgba(10,26,20,0.6);
+  border:1.5px solid rgba(77,182,172,0.15);
+  border-radius:13px;
+  padding:15px 4px 12px;
+  font-size:17px;font-weight:700;
+  color:var(--teal);
+  cursor:pointer;text-align:center;
+  font-family:inherit;line-height:1;
+  transition:all .2s ease;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.amt-sym{display:block;font-size:10px;font-weight:500;opacity:.55;margin-bottom:3px;letter-spacing:.03em}
+.amt-btn:hover{border-color:var(--teal);background:rgba(77,182,172,0.08)}
+.amt-btn.on{
+  background:linear-gradient(135deg,#4DB6AC,#38A09A);
+  border-color:transparent;color:#081410;
+  box-shadow:0 4px 20px rgba(77,182,172,0.32);
+}
+.amt-btn:active{transform:scale(.95)}
+.custom-row{display:flex;gap:8px}
+.custom-in{
+  flex:1;min-width:0;
+  background:rgba(10,26,20,0.6);
+  border:1.5px solid rgba(77,182,172,0.15);
+  border-radius:13px;
+  padding:13px 14px;
+  font-size:15px;color:var(--white);
+  outline:none;font-family:inherit;
+  transition:border-color .2s;
+}
+.custom-in:focus{border-color:var(--teal)}
+.custom-in::placeholder{color:rgba(77,182,172,0.2)}
+.go-btn{
+  flex-shrink:0;
+  background:rgba(77,182,172,0.1);
+  border:1.5px solid rgba(77,182,172,0.2);
+  border-radius:13px;padding:13px 18px;
+  font-size:13px;font-weight:700;color:var(--teal);
+  cursor:pointer;font-family:inherit;
+  transition:all .2s;white-space:nowrap;
+  touch-action:manipulation;
+}
+.go-btn:hover{background:rgba(77,182,172,0.18)}
+.go-btn:active{transform:scale(.97)}
+
+/* ── PAY BUTTON (Android) ── */
+.pay-now{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:17px 20px;
+  background:linear-gradient(135deg,#4DB6AC,#38A09A);
+  border:none;border-radius:16px;
+  font-size:17px;font-weight:700;color:#081410;
+  cursor:pointer;font-family:inherit;
+  text-decoration:none;
+  transition:all .2s;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  box-shadow:0 4px 28px rgba(77,182,172,0.28);
+  position:relative;overflow:hidden;
+  margin-bottom:10px;
+}
+.pay-now::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.13),transparent);
+  pointer-events:none;
+}
+.pay-now:active{transform:scale(.98);box-shadow:0 2px 14px rgba(77,182,172,.2)}
+.pay-now:hover{box-shadow:0 6px 32px rgba(77,182,172,.38)}
+.pay-note{
+  font-size:12px;color:var(--text3);text-align:center;
+  line-height:1.55;margin-bottom:16px;
+}
+
+/* ── DIVIDER ── */
+.or{
+  display:flex;align-items:center;gap:12px;
+  margin:16px 0;color:var(--text3);
+  font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+}
+.or::before,.or::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── QR ── */
+.qr-wrap{text-align:center}
+.qr-hint{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.55}
+.qr-card{
+  display:inline-block;
+  background:#fff;border-radius:18px;
+  padding:14px;margin-bottom:12px;
+  box-shadow:0 2px 40px rgba(245,200,66,0.1),0 0 0 1px rgba(255,255,255,.06);
+}
+#qrcode canvas,#qrcode img{display:block;border-radius:6px}
+.qr-lbl{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:5px}
+.qr-apps{font-size:11px;color:var(--text3);line-height:1.7;letter-spacing:.02em}
+
+/* ── UPI COPY ── */
+.upi-bar{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(10,26,20,.65);
+  border:1px solid var(--border);
+  border-radius:13px;padding:13px 14px;
+  margin-bottom:8px;
+}
+.upi-id{
+  flex:1;min-width:0;
+  font-size:14px;font-weight:600;color:var(--white);
+  font-family:'SF Mono','Fira Code','Courier New',monospace;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.copy-btn{
+  flex-shrink:0;
+  background:rgba(77,182,172,.1);
+  border:1px solid rgba(77,182,172,.22);
+  border-radius:9px;padding:9px 16px;
+  font-size:12px;font-weight:700;color:var(--teal);
+  cursor:pointer;font-family:inherit;white-space:nowrap;
+  transition:all .2s;touch-action:manipulation;
+}
+.copy-btn:hover{background:rgba(77,182,172,.18)}
+.copy-btn.ok{background:var(--teal);color:#081410;border-color:transparent}
+.upi-sub{font-size:11px;color:var(--text3);line-height:1.55;padding:0 2px}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;gap:16px}
+.step-row{display:flex;gap:14px;align-items:flex-start}
+.step-n{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(77,182,172,.08);
+  border:1px solid rgba(77,182,172,.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:var(--teal);
+  flex-shrink:0;margin-top:2px;
+}
+.step-body{flex:1}
+.step-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* ── THANK YOU ── */
+.ty{text-align:center;padding:32px 16px 8px}
+.ty-icon{font-size:38px;display:block;margin-bottom:14px;animation:pulse 3.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.ty-text{font-size:14px;color:var(--text3);line-height:1.9}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:24px 0 0;
+  font-size:12px;color:var(--text3);
+  border-top:1px solid var(--border);
+  margin-top:28px;line-height:2.4;
+}
+footer a{color:var(--teal);text-decoration:none}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.fi.show{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:360px){.amt-btn{font-size:15px}.pay-now{font-size:16px}}
+@media(min-width:600px){
+  .page{padding:0 28px 80px}
+  .hero{padding:72px 0 40px}
+  .app-icon{width:112px;height:112px}
+  .icon-ring{width:112px;height:112px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="pts" id="pts"></div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero fi">
+    <div class="icon-ring">
+      <img class="app-icon" src="../icon.png" alt="LifeMaster AI"
+        onerror="this.style.opacity='0.6'">
+    </div>
+    <h1 class="app-name">LifeMaster AI</h1>
+    <p class="app-tag">The Discipline OS for Focus, Recovery &amp; Growth</p>
+    <div class="app-chips">
+      <span class="chip">Free forever</span>
+      <span class="chip">100% offline</span>
+      <span class="chip">No ads</span>
+    </div>
+  </div>
+
+  <!-- MESSAGE -->
+  <div class="msg fi">
+    <p class="msg-head">Built with love.<br>Kept free for everyone.</p>
+    <p class="msg-body">LifeMaster AI will never charge you. If it helped you build discipline, beat a habit, or find your focus — a small tip keeps this project alive and growing.</p>
+  </div>
+
+  <!-- AMOUNT -->
+  <div class="card fi">
+    <p class="card-lbl">Choose an amount</p>
+    <div class="amt-grid">
+      <button class="amt-btn" onclick="pick(11,this)"><span class="amt-sym">₹</span>11</button>
+      <button class="amt-btn on" onclick="pick(51,this)"><span class="amt-sym">₹</span>51</button>
+      <button class="amt-btn" onclick="pick(101,this)"><span class="amt-sym">₹</span>101</button>
+      <button class="amt-btn" onclick="pick(201,this)"><span class="amt-sym">₹</span>201</button>
+    </div>
+    <div class="custom-row">
+      <input class="custom-in" type="number" id="cIn" placeholder="Any amount (₹)" min="1" max="99999">
+      <button class="go-btn" onclick="custom()">Set</button>
+    </div>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="card fi">
+    <p class="card-lbl">Complete your tip</p>
+
+    <!-- Android only -->
+    <div id="aSec" style="display:none">
+      <a class="pay-now" id="upiBtn" href="#" onclick="return goUPI()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z"/>
+        </svg>
+        Pay ₹<span id="aAmt">51</span> — Any UPI App
+      </a>
+      <p class="pay-note">Opens all your payment apps automatically<br>GPay · PhonePe · Paytm · BHIM · Any bank app</p>
+      <div class="or">or scan QR</div>
+    </div>
+
+    <!-- QR -->
+    <div class="qr-wrap">
+      <p class="qr-hint" id="qHint">Open any UPI app · Tap Scan · Point at this code</p>
+      <div class="qr-card">
+        <div id="qrcode"></div>
+      </div>
+      <p class="qr-lbl" id="qLbl">₹51</p>
+      <p class="qr-apps">Works with every UPI app on any device</p>
+    </div>
+
+    <div class="or">or enter manually</div>
+
+    <!-- UPI ID -->
+    <div class="upi-bar">
+      <span class="upi-id">shubhammalviya786@ybl</span>
+      <button class="copy-btn" id="cpBtn" onclick="copyID()">Copy</button>
+    </div>
+    <p class="upi-sub">Open any UPI app → Send / Pay → Enter this ID → Enter amount → Done</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="card fi">
+    <p class="card-lbl">How to pay</p>
+    <div class="steps-list" id="sList"></div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="ty fi">
+    <span class="ty-icon">🙏</span>
+    <p class="ty-text">Every tip — big or small — goes directly into<br>new features, better coaching, and keeping<br>LifeMaster AI free for everyone, always.</p>
+  </div>
+
+  <footer class="fi">
+    <p>LifeMaster AI &nbsp;·&nbsp; Kive</p>
+    <p><a href="../privacy">Privacy Policy</a></p>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const UPI='shubhammalviya786@ybl',NAME='Shubham Malviya',NOTE='Support LifeMaster AI';
+let amt=51,qr=null;
+
+const uri=a=>`upi://pay?pa=${UPI}&pn=${encodeURIComponent(NAME)}&am=${a}&cu=INR&tn=${encodeURIComponent(NOTE)}`;
+const isA=/Android/i.test(navigator.userAgent);
+const isI=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+function update(a){
+  amt=a;
+  document.getElementById('aAmt').textContent=a;
+  document.getElementById('qLbl').textContent='₹'+a;
+  if(qr){qr.clear();qr.makeCode(uri(a))}
+}
+function pick(a,b){
+  document.querySelectorAll('.amt-btn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  document.getElementById('cIn').value='';
+  update(a);
+}
+function custom(){
+  const v=parseInt(document.getElementById('cIn').value,10);
+  if(!v||v<1||v>99999)return;
+  document.querySelectorAll('.amt-btn').forEach(x=>x.classList.remove('on'));
+  update(v);
+}
+function goUPI(){window.location.href=uri(amt);return false}
+function copyID(){
+  const b=document.getElementById('cpBtn');
+  const done=()=>{b.textContent='Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok')},2500)};
+  navigator.clipboard?navigator.clipboard.writeText(UPI).then(done).catch(done):done();
+}
+
+// Steps per device
+const S={
+  a:[
+    ['Tap "Pay — Any UPI App"','Your phone shows all installed payment apps at once'],
+    ['Pick your preferred app','GPay, PhonePe, Paytm, BHIM, or your bank\'s own app'],
+    ['Verify and confirm','The amount and recipient are pre-filled — just approve'],
+  ],
+  i:[
+    ['Choose your amount above','Tap any amount or enter your own'],
+    ['Open GPay or PhonePe on your phone','Tap the Scan icon inside the app'],
+    ['Scan the QR code on this page','The app fills everything — tap Confirm to pay'],
+  ],
+  d:[
+    ['Choose your amount above','Tap any amount or enter your own'],
+    ['Open any UPI app on your phone','GPay, PhonePe, Paytm, BHIM, or your bank'],
+    ['Use the Scan feature to scan the QR code','Everything is pre-filled — tap Confirm'],
+  ]
+};
+
+function buildSteps(){
+  const k=isA?'a':isI?'i':'d';
+  const el=document.getElementById('sList');
+  S[k].forEach(([t,d],i)=>{
+    el.insertAdjacentHTML('beforeend',`
+      <div class="step-row">
+        <div class="step-n">${i+1}</div>
+        <div class="step-body">
+          <p class="step-title">${t}</p>
+          <p class="step-desc">${d}</p>
+        </div>
+      </div>`);
+  });
+  if(isA)document.getElementById('aSec').style.display='block';
+  const h=document.getElementById('qHint');
+  if(isI)h.textContent='Open GPay or PhonePe · Tap Scan · Point at this code';
+  if(!isA&&!isI)h.textContent='Open any UPI app on your phone · Tap Scan · Point here';
+}
+
+// Particles
+function mkPts(){
+  const c=document.getElementById('pts');
+  const cols=['rgba(77,182,172,','rgba(245,200,66,'];
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='pt';
+    const s=Math.random()*2.2+.8;
+    const col=cols[i%2];
+    const op=Math.random()*.35+.1;
+    const dur=Math.random()*16+10;
+    const del=Math.random()*-22;
+    p.style.cssText=`width:${s}px;height:${s}px;background:${col}${op});left:${Math.random()*100}%;animation-duration:${dur}s;animation-delay:${del}s`;
+    c.appendChild(p);
+  }
+}
+
+// Fade in observer
+function fadeIn(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}
+    });
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('load',()=>{
+  qr=new QRCode(document.getElementById('qrcode'),{
+    text:uri(51),width:200,height:200,
+    colorDark:'#0A1A14',colorLight:'#FFFFFF',
+    correctLevel:QRCode.CorrectLevel.M
+  });
+  buildSteps();mkPts();fadeIn();
+  document.getElementById('cIn').addEventListener('keypress',e=>{if(e.key==='Enter')custom()});
+});
+</script>
+</body>
+</html>
