@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="description" content="LifeMaster AI — The Discipline OS for Focus, Recovery & Growth. Free, offline, private.">
+<meta property="og:title" content="LifeMaster AI — Kive Apps">
+<meta property="og:description" content="A complete life-transformation toolkit. 100% offline. No ads. No data collection.">
+<meta property="og:image" content="https://kiveapps.github.io/apps/lifemaster-ai/icon.png">
+<title>LifeMaster AI — Kive Apps</title>
+<link rel="stylesheet" href="../../assets/css/shared.css">
+<style>
+.app-hero{
+  padding:72px 20px 56px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%,rgba(77,182,172,0.08) 0%,transparent 70%),
+    rgba(12,26,18,0.4);
+  position:relative;z-index:1;
+}
+.app-hero-icon{
+  width:96px;height:96px;border-radius:24px;
+  display:block;margin:0 auto 20px;
+  background:linear-gradient(145deg,#112018,#060E08);
+  animation:heroFloat 7s ease-in-out infinite;
+}
+.app-hero h1{
+  font-size:clamp(30px,7vw,44px);font-weight:800;
+  color:var(--white);letter-spacing:-.6px;margin-bottom:8px;
+}
+.app-hero-tag{font-size:15px;color:var(--teal);font-weight:500;margin-bottom:16px}
+.app-hero-desc{
+  font-size:16px;color:var(--text2);
+  max-width:520px;margin:0 auto 24px;line-height:1.7;
+}
+.app-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.app-chip{
+  font-size:12px;font-weight:600;color:var(--text2);
+  background:rgba(77,182,172,0.06);
+  border:1px solid rgba(77,182,172,0.12);
+  border-radius:20px;padding:6px 16px;
+}
+.app-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+.quick-links{
+  padding:48px 20px;
+  border-bottom:1px solid var(--border);
+}
+.quick-grid{
+  max-width:700px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+}
+@media(max-width:500px){.quick-grid{grid-template-columns:1fr}}
+.quick-card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  text-decoration:none;
+  transition:all .2s;
+}
+.quick-card:hover{border-color:var(--border-hover);opacity:1}
+.quick-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:rgba(77,182,172,0.08);
+  border:1px solid rgba(77,182,172,0.14);
+  display:flex;align-items:center;justify-content:center;
+}
+.quick-icon svg{width:20px;height:20px;color:var(--teal)}
+.quick-body h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:2px}
+.quick-body p{font-size:12px;color:var(--text3);margin:0}
+
+.features-section{padding:56px 20px}
+.feat-grid{
+  max-width:800px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+@media(max-width:640px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-icon">K</div>
+      <span class="nav-brand-text">Kive Apps</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/apps/lifemaster-ai/" class="nav-link active">LifeMaster AI</a>
+      <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
+      <a href="/apps/lifemaster-ai/support/" class="nav-link">Support</a>
+      <a href="/docs/" class="nav-link">Docs</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/apps/lifemaster-ai/" class="nav-link active">LifeMaster AI</a>
+  <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
+  <a href="/apps/lifemaster-ai/support/" class="nav-link">Support</a>
+  <a href="/docs/" class="nav-link">Docs</a>
+</div>
+
+<!-- APP HERO -->
+<div class="app-hero fi">
+  <img class="app-hero-icon" src="icon.png" alt="LifeMaster AI" onerror="this.src='../../icon.png'">
+  <h1>LifeMaster AI</h1>
+  <p class="app-hero-tag">The Discipline OS for Focus, Recovery &amp; Growth</p>
+  <p class="app-hero-desc">A complete life-transformation toolkit — habit tracking, goal setting, focus timer, mood logging, journal, addiction recovery tools, and AI-powered coaching.</p>
+  <div class="app-chips">
+    <span class="app-chip">Free forever</span>
+    <span class="app-chip">100% offline</span>
+    <span class="app-chip">No ads</span>
+    <span class="app-chip">No data collection</span>
+  </div>
+  <div class="app-cta">
+    <a href="https://play.google.com/store/apps/details?id=com.kive.lifemaster" class="btn btn-primary btn-lg" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+      Get on Play Store
+    </a>
+    <a href="support/" class="btn btn-secondary btn-lg">Support the Dev ☕</a>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="quick-links">
+  <div class="section-header fi">
+    <p class="section-tag">Quick Links</p>
+  </div>
+  <div class="quick-grid">
+    <a href="privacy/" class="quick-card fi">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="quick-body">
+        <h3>Privacy Policy</h3>
+        <p>We collect nothing — ever</p>
+      </div>
+    </a>
+    <a href="support/" class="quick-card fi">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="quick-body">
+        <h3>Support the Dev</h3>
+        <p>Buy the developer a chai</p>
+      </div>
+    </a>
+    <a href="updates/" class="quick-card fi">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      </div>
+      <div class="quick-body">
+        <h3>Release Notes</h3>
+        <p>What's new in each update</p>
+      </div>
+    </a>
+    <a href="contact/" class="quick-card fi">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="quick-body">
+        <h3>Contact Us</h3>
+        <p>Questions, feedback, bugs</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features-section">
+  <div class="section-header fi">
+    <p class="section-tag">Features</p>
+    <h2 class="section-title">Everything You Need to Transform</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h4 class="feat-title">Goal Setting</h4>
+      <p class="feat-text">Set, track, and achieve your goals with daily scoring</p>
+    </div>
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></div>
+      <h4 class="feat-title">Habit Builder</h4>
+      <p class="feat-text">Build habits with streaks and detailed statistics</p>
+    </div>
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h4 class="feat-title">Focus Timer</h4>
+      <p class="feat-text">Pomodoro-style timer with customizable sessions</p>
+    </div>
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <h4 class="feat-title">Daily Journal</h4>
+      <p class="feat-text">Reflect and track your thoughts every day</p>
+    </div>
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h4 class="feat-title">Mood Tracking</h4>
+      <p class="feat-text">Log and analyze your emotional patterns</p>
+    </div>
+    <div class="feat-card fi">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h4 class="feat-title">Recovery Tools</h4>
+      <p class="feat-text">Addiction recovery toolkit with urge management</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/" class="footer-link">Home</a>
+      <a href="privacy/" class="footer-link">Privacy Policy</a>
+      <a href="support/" class="footer-link">Support</a>
+      <a href="contact/" class="footer-link">Contact</a>
+      <a href="updates/" class="footer-link">Updates</a>
+    </div>
+    <p class="footer-copy">LifeMaster AI · <a href="/">Kive Apps</a></p>
+    <p class="footer-copy">&copy; 2026 Kive Apps. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

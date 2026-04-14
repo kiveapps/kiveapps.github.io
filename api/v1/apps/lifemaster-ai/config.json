@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "app": {
+    "id": "com.kive.lifemaster",
+    "name": "LifeMaster AI",
+    "slug": "lifemaster-ai",
+    "tagline": "The Discipline OS for Focus, Recovery & Growth",
+    "icon_url": "https://kiveapps.github.io/icon.png",
+    "developer": "Kive Apps"
+  },
+  "version": {
+    "latest": "1.0.0",
+    "latest_code": 1,
+    "min_supported": "1.0.0",
+    "min_supported_code": 1,
+    "release_date": "2026-04-01",
+    "release_notes_url": "https://kiveapps.github.io/updates/"
+  },
+  "update": {
+    "mandatory": false,
+    "recommended": false,
+    "title": "Update Available",
+    "message": "A new version of LifeMaster AI is available with improvements and fixes.",
+    "cta_label": "Update Now",
+    "dismiss_label": "Later",
+    "play_store_url": "https://play.google.com/store/apps/details?id=com.kive.lifemaster",
+    "dismiss_for_days": 3,
+    "show_after_version_code": 0
+  },
+  "maintenance": {
+    "enabled": false,
+    "title": "Under Maintenance",
+    "message": "We're improving things behind the scenes. The app will be back shortly.",
+    "estimated_end": null,
+    "allow_offline_use": true,
+    "contact_url": "https://kiveapps.github.io/contact/"
+  },
+  "links": {
+    "privacy_policy": "https://kiveapps.github.io/privacy/",
+    "terms_of_service": null,
+    "support": "https://kiveapps.github.io/support/",
+    "contact": "https://kiveapps.github.io/contact/",
+    "updates": "https://kiveapps.github.io/updates/",
+    "website": "https://kiveapps.github.io/",
+    "play_store": "https://play.google.com/store/apps/details?id=com.kive.lifemaster",
+    "faq": null
+  },
+  "support": {
+    "email": "kive.apps@gmail.com",
+    "response_time_hours": 48
+  },
+  "api_endpoints": {
+    "base_url": "https://kiveapps.github.io/api/v1/apps/lifemaster-ai",
+    "config": "/config.json",
+    "announcements": "/announcements.json",
+    "notifications": "/notifications.json",
+    "popups": "/popups.json",
+    "features": "/features.json"
+  }
+}

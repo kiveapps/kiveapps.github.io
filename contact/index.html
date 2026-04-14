@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="description" content="Contact Kive Apps — Get support, share feedback, or just say hello.">
+<title>Contact Us — Kive Apps</title>
+<link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+.contact-hero{
+  padding:60px 20px 48px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(12,26,18,0.4);
+  position:relative;z-index:1;
+}
+.contact-hero h1{
+  font-size:clamp(28px,6vw,38px);font-weight:800;
+  color:var(--white);letter-spacing:-.5px;margin-bottom:10px;
+}
+.contact-hero p{font-size:15px;color:var(--text2);max-width:440px;margin:0 auto}
+
+.contact-page{
+  position:relative;z-index:1;
+  max-width:640px;margin:0 auto;
+  padding:40px 20px 80px;
+}
+
+/* Cards */
+.channel-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+@media(max-width:500px){.channel-cards{grid-template-columns:1fr}}
+.channel-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:24px;text-align:center;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  transition:all .2s;
+}
+.channel-card:hover{border-color:var(--border-hover)}
+.channel-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(77,182,172,0.08);
+  border:1px solid rgba(77,182,172,0.14);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+}
+.channel-icon svg{width:22px;height:22px;color:var(--teal)}
+.channel-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:6px}
+.channel-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.channel-email{
+  font-size:13px;font-weight:600;color:var(--text3);
+  display:block;margin-top:8px;
+}
+
+/* Form */
+.contact-form-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:28px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  margin-bottom:32px;
+}
+.contact-form-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--teal);margin-bottom:20px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+
+/* Success */
+.success-msg{
+  display:none;
+  text-align:center;padding:32px 20px;
+  background:rgba(77,182,172,0.06);
+  border:1px solid rgba(77,182,172,0.14);
+  border-radius:var(--radius-lg);
+  margin-bottom:24px;
+}
+.success-msg.show{display:block}
+.success-msg .icon{font-size:36px;display:block;margin-bottom:12px}
+.success-msg h3{font-size:18px;color:var(--white);margin-bottom:6px}
+.success-msg p{font-size:14px;color:var(--text2)}
+
+/* Info */
+.info-card{
+  background:rgba(10,26,20,0.5);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:18px;text-align:center;
+}
+.info-card p{font-size:13px;color:var(--text2);line-height:1.7;margin:0}
+.info-card strong{color:var(--text);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-icon">K</div>
+      <span class="nav-brand-text">Kive Apps</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/privacy/" class="nav-link">Privacy</a>
+      <a href="/support/" class="nav-link">Support</a>
+      <a href="/contact/" class="nav-link active">Contact</a>
+      <a href="/docs/" class="nav-link">Docs</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/privacy/" class="nav-link">Privacy</a>
+  <a href="/support/" class="nav-link">Support</a>
+  <a href="/contact/" class="nav-link active">Contact</a>
+  <a href="/docs/" class="nav-link">Docs</a>
+</div>
+
+<!-- HERO -->
+<div class="contact-hero fi">
+  <span class="hero-badge">Contact Us</span>
+  <h1>We'd Love to Hear From You</h1>
+  <p>Whether it's a bug report, feature request, feedback, or just a hello — we respond to every message.</p>
+</div>
+
+<div class="contact-page">
+
+  <!-- CHANNEL CARDS -->
+  <div class="channel-cards">
+    <div class="channel-card fi">
+      <div class="channel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+      </div>
+      <h3 class="channel-title">Support</h3>
+      <p class="channel-desc">Need help with one of our apps? Report a bug or ask a question.</p>
+      <a href="#" class="btn btn-secondary btn-sm w-full" onclick="setCategory('support');return false">Get Support</a>
+      <span class="channel-email">kive.apps@gmail.com</span>
+    </div>
+    <div class="channel-card fi">
+      <div class="channel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3 class="channel-title">General Inquiry</h3>
+      <p class="channel-desc">Feedback, partnerships, feature requests, or just say hello.</p>
+      <a href="#" class="btn btn-secondary btn-sm w-full" onclick="setCategory('contactus');return false">Contact Us</a>
+      <span class="channel-email">kive.apps@gmail.com</span>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact-form-card fi" id="formCard">
+    <p class="contact-form-title">Send us a message</p>
+    <form id="contactForm" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" type="text" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Your Email</label>
+          <input class="form-input" type="email" id="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="category">Category</label>
+        <select class="form-select" id="category">
+          <option value="support">App Support</option>
+          <option value="contactus">General Inquiry</option>
+          <option value="support">Bug Report</option>
+          <option value="contactus">Feature Request</option>
+          <option value="contactus">Feedback</option>
+          <option value="contactus">Partnership</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="app">Related App</label>
+        <select class="form-select" id="app">
+          <option value="LifeMaster AI">LifeMaster AI</option>
+          <option value="General">General / Not App Specific</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <input class="form-input" type="text" id="subject" placeholder="Brief summary of your message" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea class="form-textarea" id="message" placeholder="Tell us everything..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="device">Device Info (optional)</label>
+        <input class="form-input" type="text" id="device" placeholder="e.g. Samsung Galaxy S24, Android 15">
+        <p class="form-hint">Helps us debug issues faster.</p>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg w-full" style="margin-top:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send Message
+      </button>
+    </form>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-msg" id="successMsg">
+    <span class="icon">✉️</span>
+    <h3>Opening your email app...</h3>
+    <p>Your message details have been pre-filled. Just hit send in your email app.<br>We'll get back to you within 48 hours.</p>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-card fi">
+    <p><strong>Response Time:</strong> We aim to respond to every message within <strong>48 hours</strong>.<br>For urgent issues, please include "URGENT" in your subject line.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/privacy/" class="footer-link">Privacy Policy</a>
+        <a href="/support/" class="footer-link">Support</a>
+        <a href="/updates/" class="footer-link">Updates</a>
+        <a href="/docs/" class="footer-link">Docs</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 <a href="/">Kive Apps</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* Email routing - user sees kive.apps@gmail.com but we route via +tags */
+const EMAIL_MAP = {
+  support: 'kive.apps+support@gmail.com',
+  contactus: 'kive.apps+contactus@gmail.com'
+};
+
+function setCategory(cat) {
+  const sel = document.getElementById('category');
+  if (cat === 'support') sel.selectedIndex = 0;
+  else sel.selectedIndex = 1;
+  document.getElementById('name').focus();
+  document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const category = document.getElementById('category').value;
+  const app = document.getElementById('app').value;
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+  const device = document.getElementById('device').value.trim();
+
+  if (!name || !email || !subject || !message) return;
+
+  const targetEmail = EMAIL_MAP[category] || EMAIL_MAP.contactus;
+
+  const fullSubject = `[${app}] ${subject}`;
+
+  let body = `Hi Kive Apps Team,\n\n${message}`;
+  body += `\n\n---\nName: ${name}`;
+  body += `\nEmail: ${email}`;
+  body += `\nApp: ${app}`;
+  body += `\nCategory: ${document.getElementById('category').options[document.getElementById('category').selectedIndex].text}`;
+  if (device) body += `\nDevice: ${device}`;
+  body += `\n---`;
+
+  const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoUrl;
+
+  document.getElementById('successMsg').classList.add('show');
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  return false;
+}
+
+/* Fade in */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+}, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

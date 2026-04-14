@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="description" content="Kive Apps Developer Documentation — API reference, schemas, and management guide.">
+<title>Developer Docs — Kive Apps</title>
+<link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+.docs-hero{
+  padding:60px 20px 48px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(12,26,18,0.4);
+  position:relative;z-index:1;
+}
+.docs-hero h1{
+  font-size:clamp(26px,5vw,36px);font-weight:800;
+  color:var(--white);letter-spacing:-.5px;margin-bottom:10px;
+}
+.docs-hero p{font-size:15px;color:var(--text2);max-width:500px;margin:0 auto}
+
+.docs-page{
+  position:relative;z-index:1;
+  max-width:860px;margin:0 auto;
+  padding:40px 20px 80px;
+}
+.docs-layout{display:flex;gap:32px;align-items:flex-start}
+@media(max-width:768px){.docs-layout{flex-direction:column}.docs-sidebar{position:static!important;width:100%!important}}
+
+/* Sidebar */
+.docs-sidebar{
+  position:sticky;top:76px;
+  width:220px;flex-shrink:0;
+}
+.sidebar-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:16px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.sidebar-title{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--teal);margin-bottom:12px;
+}
+.sidebar-link{
+  display:block;font-size:13px;color:var(--text2);
+  padding:7px 10px;border-radius:6px;
+  text-decoration:none;transition:all .15s;
+  margin-bottom:2px;
+}
+.sidebar-link:hover{color:var(--white);background:rgba(77,182,172,0.06);opacity:1}
+.sidebar-link.active{color:var(--teal);background:rgba(77,182,172,0.08)}
+.sidebar-divider{
+  height:1px;background:var(--border);
+  margin:10px 0;
+}
+
+/* Content */
+.docs-content{flex:1;min-width:0}
+
+.doc-section{margin-bottom:48px}
+.doc-section h2{
+  font-size:22px;font-weight:700;color:var(--white);
+  letter-spacing:-.3px;margin-bottom:8px;
+  padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.doc-section h3{
+  font-size:16px;font-weight:600;color:var(--teal);
+  margin:20px 0 8px;
+}
+.doc-section h4{
+  font-size:14px;font-weight:600;color:var(--text);
+  margin:14px 0 6px;
+}
+.doc-section p{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:12px}
+.doc-section ul,.doc-section ol{
+  margin:8px 0 14px 20px;
+  font-size:14px;color:var(--text2);line-height:1.8;
+}
+.doc-section li{margin-bottom:4px}
+.doc-section code{
+  font-family:'SF Mono','Fira Code','Courier New',monospace;
+  font-size:12px;background:rgba(77,182,172,0.08);
+  color:var(--teal);padding:2px 6px;border-radius:4px;
+}
+.doc-section a{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+
+/* Code block */
+.code-block{
+  background:rgba(8,20,14,0.9);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;margin:12px 0 16px;
+  overflow-x:auto;
+  font-family:'SF Mono','Fira Code','Courier New',monospace;
+  font-size:12px;line-height:1.7;color:var(--text);
+  white-space:pre;
+  -webkit-overflow-scrolling:touch;
+}
+.code-block .k{color:var(--teal)}
+.code-block .s{color:var(--gold)}
+.code-block .n{color:var(--blue)}
+.code-block .b{color:var(--orange)}
+.code-block .c{color:var(--text3);font-style:italic}
+
+/* Endpoint card */
+.endpoint{
+  background:rgba(10,26,20,0.5);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:14px 0;overflow:hidden;
+}
+.endpoint-header{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  background:rgba(77,182,172,0.03);
+}
+.endpoint-method{
+  font-size:11px;font-weight:800;
+  background:rgba(129,199,132,0.12);color:var(--green);
+  padding:3px 8px;border-radius:4px;
+  letter-spacing:.04em;
+}
+.endpoint-url{
+  font-family:'SF Mono','Fira Code','Courier New',monospace;
+  font-size:12px;color:var(--text);flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.endpoint-body{padding:14px 16px}
+.endpoint-body p{font-size:13px;margin-bottom:8px}
+
+/* Table */
+.doc-table{
+  width:100%;border-collapse:collapse;
+  margin:12px 0 16px;font-size:13px;
+}
+.doc-table th{
+  text-align:left;font-weight:600;color:var(--teal);
+  padding:8px 10px;border-bottom:1px solid var(--border);
+  font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+}
+.doc-table td{
+  padding:8px 10px;border-bottom:1px solid rgba(77,182,172,0.06);
+  color:var(--text2);vertical-align:top;
+}
+.doc-table td code{font-size:11px}
+
+/* Alert */
+.doc-alert{
+  padding:14px 16px;border-radius:10px;
+  margin:14px 0;font-size:13px;line-height:1.7;
+}
+.doc-alert strong{display:block;margin-bottom:2px}
+.doc-alert-info{
+  background:rgba(100,181,246,0.06);
+  border:1px solid rgba(100,181,246,0.15);
+  color:var(--blue);
+}
+.doc-alert-warn{
+  background:rgba(255,183,77,0.06);
+  border:1px solid rgba(255,183,77,0.15);
+  color:var(--orange);
+}
+.doc-alert-tip{
+  background:rgba(77,182,172,0.06);
+  border:1px solid rgba(77,182,172,0.15);
+  color:var(--teal);
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-icon">K</div>
+      <span class="nav-brand-text">Kive Apps</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/privacy/" class="nav-link">Privacy</a>
+      <a href="/support/" class="nav-link">Support</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+      <a href="/docs/" class="nav-link active">Docs</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/privacy/" class="nav-link">Privacy</a>
+  <a href="/support/" class="nav-link">Support</a>
+  <a href="/contact/" class="nav-link">Contact</a>
+  <a href="/docs/" class="nav-link active">Docs</a>
+</div>
+
+<!-- HERO -->
+<div class="docs-hero fi">
+  <span class="hero-badge">Developer Reference</span>
+  <h1>API &amp; Configuration Docs</h1>
+  <p>Complete reference for all JSON API endpoints, schemas, and remote configuration management.</p>
+</div>
+
+<div class="docs-page">
+  <div class="docs-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar">
+      <div class="sidebar-card">
+        <p class="sidebar-title">Documentation</p>
+        <a href="#overview" class="sidebar-link active">Overview</a>
+        <a href="#base-url" class="sidebar-link">Base URL</a>
+        <a href="#structure" class="sidebar-link">Project Structure</a>
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-title">API Endpoints</p>
+        <a href="#config" class="sidebar-link">config.json</a>
+        <a href="#announcements" class="sidebar-link">announcements.json</a>
+        <a href="#notifications" class="sidebar-link">notifications.json</a>
+        <a href="#popups" class="sidebar-link">popups.json</a>
+        <a href="#features" class="sidebar-link">features.json</a>
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-title">Guides</p>
+        <a href="#new-app" class="sidebar-link">Adding a New App</a>
+        <a href="#force-update" class="sidebar-link">Force Update Flow</a>
+        <a href="#announcement-guide" class="sidebar-link">Announcements</a>
+        <a href="#popup-guide" class="sidebar-link">Remote Popups</a>
+        <a href="#email-routing" class="sidebar-link">Email Routing</a>
+        <a href="#android-integration" class="sidebar-link">Android Integration</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="docs-content">
+
+      <!-- OVERVIEW -->
+      <div class="doc-section fi" id="overview">
+        <h2>Overview</h2>
+        <p>This is the central configuration and control hub for all Kive Apps Android applications. It's a static GitHub Pages site that serves as:</p>
+        <ul>
+          <li><strong>Public website</strong> — Home page, privacy policies, support pages, contact forms</li>
+          <li><strong>JSON API center</strong> — Remote configuration endpoints that Android apps fetch to control behavior</li>
+          <li><strong>Management dashboard</strong> — Edit JSON files to push announcements, trigger updates, show popups, toggle features — all without releasing a new app version</li>
+        </ul>
+        <div class="doc-alert doc-alert-tip">
+          <strong>How it works</strong>
+          Your Android apps fetch JSON files from this GitHub Pages site on launch. By editing these JSON files and pushing to GitHub, you instantly control what every user sees — no server, no backend, no cost.
+        </div>
+      </div>
+
+      <!-- BASE URL -->
+      <div class="doc-section fi" id="base-url">
+        <h2>Base URL</h2>
+        <div class="code-block"><span class="s">https://kiveapps.github.io</span></div>
+        <h3>API Base</h3>
+        <div class="code-block"><span class="s">https://kiveapps.github.io/api/v1/apps/{app-slug}/</span></div>
+        <p>Currently registered apps:</p>
+        <table class="doc-table">
+          <tr><th>App</th><th>Slug</th><th>API Base</th></tr>
+          <tr>
+            <td>LifeMaster AI</td>
+            <td><code>lifemaster-ai</code></td>
+            <td><code>https://kiveapps.github.io/api/v1/apps/lifemaster-ai/</code></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- STRUCTURE -->
+      <div class="doc-section fi" id="structure">
+        <h2>Project Structure</h2>
+        <div class="code-block">kiveapps.github.io/
+├── index.html                          <span class="c"># Home page</span>
+├── icon.png                            <span class="c"># Brand icon</span>
+├── assets/css/shared.css               <span class="c"># Shared design system</span>
+│
+├── privacy/index.html                  <span class="c"># LifeMaster AI privacy policy</span>
+├── support/index.html                  <span class="c"># LifeMaster AI support/donation</span>
+├── contact/index.html                  <span class="c"># Contact form (routes to email)</span>
+├── updates/index.html                  <span class="c"># Release notes / changelog</span>
+├── docs/index.html                     <span class="c"># This documentation</span>
+│
+├── api/v1/apps/lifemaster-ai/
+│   ├── config.json                     <span class="c"># App config &amp; version control</span>
+│   ├── announcements.json              <span class="c"># In-app announcements</span>
+│   ├── notifications.json              <span class="c"># Push notification triggers</span>
+│   ├── popups.json                     <span class="c"># Remote dialog/popup triggers</span>
+│   └── features.json                   <span class="c"># Feature flags &amp; remote config</span>
+│
+└── <span class="c"># To add another app, create:</span>
+    <span class="c"># api/v1/apps/{new-app-slug}/ with the same JSON files</span>
+    <span class="c"># and corresponding HTML pages</span></div>
+      </div>
+
+      <!-- CONFIG.JSON -->
+      <div class="doc-section fi" id="config">
+        <h2>config.json</h2>
+        <p>The primary configuration file. Your Android app should fetch this on every launch to check for updates, maintenance mode, and get current links.</p>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-url">/api/v1/apps/lifemaster-ai/config.json</span>
+          </div>
+          <div class="endpoint-body">
+            <p>Returns the full app configuration including version info, update requirements, maintenance status, and links.</p>
+          </div>
+        </div>
+
+        <h3>Key Fields</h3>
+        <table class="doc-table">
+          <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>version.latest</code></td><td>string</td><td>Latest version string (e.g. "1.2.0")</td></tr>
+          <tr><td><code>version.latest_code</code></td><td>int</td><td>Latest version code (Android versionCode)</td></tr>
+          <tr><td><code>version.min_supported</code></td><td>string</td><td>Minimum version that still works</td></tr>
+          <tr><td><code>version.min_supported_code</code></td><td>int</td><td>Minimum supported versionCode</td></tr>
+          <tr><td><code>update.mandatory</code></td><td>bool</td><td>If true, user MUST update (blocks app)</td></tr>
+          <tr><td><code>update.recommended</code></td><td>bool</td><td>If true, shows non-blocking update prompt</td></tr>
+          <tr><td><code>update.dismiss_for_days</code></td><td>int</td><td>Days before showing recommended update again</td></tr>
+          <tr><td><code>maintenance.enabled</code></td><td>bool</td><td>If true, show maintenance screen</td></tr>
+          <tr><td><code>maintenance.allow_offline_use</code></td><td>bool</td><td>If true, let users use offline features during maintenance</td></tr>
+        </table>
+
+        <h3>Android Implementation Logic</h3>
+        <div class="code-block"><span class="c">// Pseudocode for app startup</span>
+<span class="k">val</span> config = fetchJson(<span class="s">"config.json"</span>)
+
+<span class="c">// 1. Check maintenance</span>
+<span class="k">if</span> (config.maintenance.enabled) {
+    showMaintenanceScreen(config.maintenance)
+    <span class="k">if</span> (!config.maintenance.allow_offline_use) <span class="k">return</span>
+}
+
+<span class="c">// 2. Check mandatory update</span>
+<span class="k">if</span> (appVersionCode &lt; config.version.min_supported_code) {
+    showForceUpdateDialog(config.update)  <span class="c">// Non-dismissible</span>
+    <span class="k">return</span>
+}
+
+<span class="c">// 3. Check recommended update</span>
+<span class="k">if</span> (config.update.recommended &amp;&amp;
+    appVersionCode &lt; config.version.latest_code) {
+    showUpdateDialog(config.update)       <span class="c">// Dismissible</span>
+}</div>
+
+        <h3>How to Trigger a Mandatory Update</h3>
+        <ol>
+          <li>Release new version on Play Store</li>
+          <li>Edit <code>config.json</code>:
+            <ul>
+              <li>Set <code>version.latest</code> and <code>version.latest_code</code> to new version</li>
+              <li>Set <code>version.min_supported</code> and <code>version.min_supported_code</code> to the new minimum</li>
+              <li>Set <code>update.mandatory</code> to <code>true</code></li>
+              <li>Update <code>update.message</code> with reason</li>
+            </ul>
+          </li>
+          <li>Push to GitHub — all users see mandatory update on next app open</li>
+        </ol>
+      </div>
+
+      <!-- ANNOUNCEMENTS -->
+      <div class="doc-section fi" id="announcements">
+        <h2>announcements.json</h2>
+        <p>Show in-app announcements, banners, and news to users. Great for welcoming new users, announcing features, or time-limited promotions.</p>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-url">/api/v1/apps/lifemaster-ai/announcements.json</span>
+          </div>
+          <div class="endpoint-body">
+            <p>Returns an array of announcements. App should filter by <code>active</code>, schedule dates, and targeting rules.</p>
+          </div>
+        </div>
+
+        <h3>Announcement Object Fields</h3>
+        <table class="doc-table">
+          <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>id</code></td><td>string</td><td>Unique ID — track dismissals locally by this</td></tr>
+          <tr><td><code>type</code></td><td>string</td><td>info | warning | success | promo | update | event</td></tr>
+          <tr><td><code>title</code></td><td>string</td><td>Announcement title</td></tr>
+          <tr><td><code>message</code></td><td>string</td><td>Announcement body text</td></tr>
+          <tr><td><code>image_url</code></td><td>string?</td><td>Optional banner image URL</td></tr>
+          <tr><td><code>action.type</code></td><td>string</td><td>none | open_url | open_screen | deep_link</td></tr>
+          <tr><td><code>action.url</code></td><td>string?</td><td>URL or deep link to open on tap</td></tr>
+          <tr><td><code>display.style</code></td><td>string</td><td>banner | card | fullscreen | snackbar | inline</td></tr>
+          <tr><td><code>display.dismissible</code></td><td>bool</td><td>Whether user can dismiss it</td></tr>
+          <tr><td><code>display.show_once</code></td><td>bool</td><td>Show only once per user</td></tr>
+          <tr><td><code>display.max_impressions</code></td><td>int</td><td>Max times to show (0 = unlimited)</td></tr>
+          <tr><td><code>schedule.start_date</code></td><td>ISO 8601?</td><td>When to start showing</td></tr>
+          <tr><td><code>schedule.end_date</code></td><td>ISO 8601?</td><td>When to stop showing (null = forever)</td></tr>
+          <tr><td><code>targeting.*</code></td><td>various</td><td>Version, platform, country, language filters</td></tr>
+          <tr><td><code>active</code></td><td>bool</td><td>Master switch — set false to hide immediately</td></tr>
+        </table>
+
+        <div class="doc-alert doc-alert-info">
+          <strong>Quick add an announcement</strong>
+          Copy the placeholder object in <code>announcements.json</code>, fill in the fields, set <code>active: true</code>, push to GitHub.
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div class="doc-section fi" id="notifications">
+        <h2>notifications.json</h2>
+        <p>Remote notification triggers. The app polls this endpoint and shows local notifications based on the entries. This is NOT Firebase push — it's a pull-based system that works without any server.</p>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-url">/api/v1/apps/lifemaster-ai/notifications.json</span>
+          </div>
+          <div class="endpoint-body">
+            <p>Returns notifications to show. The app should check this periodically (e.g. on app open or via WorkManager) and schedule local notifications.</p>
+          </div>
+        </div>
+
+        <h3>Notification Object Fields</h3>
+        <table class="doc-table">
+          <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>id</code></td><td>string</td><td>Unique ID — track shown notifications locally</td></tr>
+          <tr><td><code>title</code></td><td>string</td><td>Notification title</td></tr>
+          <tr><td><code>body</code></td><td>string</td><td>Notification body text</td></tr>
+          <tr><td><code>channel</code></td><td>string</td><td>Android notification channel: updates | announcements | reminders | system</td></tr>
+          <tr><td><code>action.type</code></td><td>string</td><td>open_app | open_screen | open_url | deep_link | open_play_store</td></tr>
+          <tr><td><code>schedule.preferred_time</code></td><td>string?</td><td>Preferred time to show (HH:mm format)</td></tr>
+          <tr><td><code>schedule.repeat</code></td><td>string</td><td>none | daily | weekly</td></tr>
+          <tr><td><code>display.silent</code></td><td>bool</td><td>Show silently (no sound/vibration)</td></tr>
+          <tr><td><code>priority</code></td><td>string</td><td>low | default | high | urgent</td></tr>
+          <tr><td><code>ttl_hours</code></td><td>int?</td><td>Auto-expire after N hours (null = never)</td></tr>
+          <tr><td><code>active</code></td><td>bool</td><td>Master switch</td></tr>
+        </table>
+
+        <div class="doc-alert doc-alert-warn">
+          <strong>Important</strong>
+          Since this is pull-based (not Firebase), notifications will appear when the app runs — not in real-time. For time-critical messages, prefer announcements or popups instead.
+        </div>
+      </div>
+
+      <!-- POPUPS -->
+      <div class="doc-section fi" id="popups">
+        <h2>popups.json</h2>
+        <p>Show dialogs, bottom sheets, and overlays to users remotely. Perfect for surveys, changelogs, promotions, or important messages.</p>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-url">/api/v1/apps/lifemaster-ai/popups.json</span>
+          </div>
+          <div class="endpoint-body">
+            <p>Returns an array of popup definitions. App should show them based on targeting and display rules.</p>
+          </div>
+        </div>
+
+        <h3>Popup Object Fields</h3>
+        <table class="doc-table">
+          <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>id</code></td><td>string</td><td>Unique ID for tracking dismissals</td></tr>
+          <tr><td><code>type</code></td><td>string</td><td>dialog | bottom_sheet | fullscreen | banner | rating | survey | changelog | force_update</td></tr>
+          <tr><td><code>title</code></td><td>string</td><td>Popup title</td></tr>
+          <tr><td><code>message</code></td><td>string</td><td>Popup body (supports basic formatting)</td></tr>
+          <tr><td><code>image_url</code></td><td>string?</td><td>Optional header image</td></tr>
+          <tr><td><code>lottie_url</code></td><td>string?</td><td>Optional Lottie animation URL</td></tr>
+          <tr><td><code>primary_button</code></td><td>object</td><td>Main action button (label, action type, URL)</td></tr>
+          <tr><td><code>secondary_button</code></td><td>object?</td><td>Optional secondary button</td></tr>
+          <tr><td><code>display.dismissible</code></td><td>bool</td><td>Can user dismiss? (false for force_update)</td></tr>
+          <tr><td><code>display.show_once</code></td><td>bool</td><td>Show only once per user</td></tr>
+          <tr><td><code>display.target_screens</code></td><td>array</td><td>Show only on specific screens (empty = any)</td></tr>
+          <tr><td><code>display.delay_seconds</code></td><td>int</td><td>Delay before showing after screen loads</td></tr>
+          <tr><td><code>display.show_on_app_open</code></td><td>bool</td><td>Show immediately on app open</td></tr>
+          <tr><td><code>targeting.days_since_install_min</code></td><td>int?</td><td>Only show to users who installed N+ days ago</td></tr>
+          <tr><td><code>targeting.new_users_only</code></td><td>bool</td><td>Only show to users who installed recently</td></tr>
+          <tr><td><code>active</code></td><td>bool</td><td>Master switch</td></tr>
+        </table>
+
+        <h3>Common Popup Recipes</h3>
+
+        <h4>Rate the App</h4>
+        <div class="code-block">{
+  <span class="k">"id"</span>: <span class="s">"rate-app-v1"</span>,
+  <span class="k">"type"</span>: <span class="s">"rating"</span>,
+  <span class="k">"title"</span>: <span class="s">"Enjoying LifeMaster AI?"</span>,
+  <span class="k">"message"</span>: <span class="s">"A quick rating helps others discover this app."</span>,
+  <span class="k">"primary_button"</span>: {
+    <span class="k">"label"</span>: <span class="s">"Rate Now"</span>,
+    <span class="k">"action"</span>: <span class="s">"open_play_store"</span>
+  },
+  <span class="k">"secondary_button"</span>: {
+    <span class="k">"label"</span>: <span class="s">"Maybe Later"</span>,
+    <span class="k">"action"</span>: <span class="s">"dismiss"</span>
+  },
+  <span class="k">"display"</span>: { <span class="k">"show_once"</span>: <span class="b">false</span>, <span class="k">"frequency"</span>: <span class="s">"once"</span>, <span class="k">"frequency_hours"</span>: <span class="n">720</span> },
+  <span class="k">"targeting"</span>: { <span class="k">"days_since_install_min"</span>: <span class="n">7</span>, <span class="k">"sessions_min"</span>: <span class="n">5</span> },
+  <span class="k">"active"</span>: <span class="b">true</span>
+}</div>
+
+        <h4>Force Update Dialog</h4>
+        <div class="code-block">{
+  <span class="k">"id"</span>: <span class="s">"force-update-v2"</span>,
+  <span class="k">"type"</span>: <span class="s">"force_update"</span>,
+  <span class="k">"title"</span>: <span class="s">"Update Required"</span>,
+  <span class="k">"message"</span>: <span class="s">"Please update to continue using LifeMaster AI."</span>,
+  <span class="k">"primary_button"</span>: {
+    <span class="k">"label"</span>: <span class="s">"Update Now"</span>,
+    <span class="k">"action"</span>: <span class="s">"open_play_store"</span>
+  },
+  <span class="k">"display"</span>: { <span class="k">"dismissible"</span>: <span class="b">false</span>, <span class="k">"show_on_app_open"</span>: <span class="b">true</span> },
+  <span class="k">"targeting"</span>: { <span class="k">"version_code_max"</span>: <span class="n">5</span> },
+  <span class="k">"active"</span>: <span class="b">true</span>
+}</div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="doc-section fi" id="features">
+        <h2>features.json</h2>
+        <p>Feature flags and remote configuration values. Toggle features, control behavior, and A/B test without releasing new versions.</p>
+
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="endpoint-method">GET</span>
+            <span class="endpoint-url">/api/v1/apps/lifemaster-ai/features.json</span>
+          </div>
+          <div class="endpoint-body">
+            <p>Returns all feature flags and their values. App should cache and fallback to defaults if fetch fails.</p>
+          </div>
+        </div>
+
+        <h3>Key Fields</h3>
+        <table class="doc-table">
+          <tr><th>Flag</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>features.show_support_banner</code></td><td>bool</td><td>Show "Support the Dev" banner in app</td></tr>
+          <tr><td><code>features.show_rating_prompt</code></td><td>bool</td><td>Enable the Play Store rating prompt</td></tr>
+          <tr><td><code>features.show_whats_new_on_update</code></td><td>bool</td><td>Show changelog popup after app update</td></tr>
+          <tr><td><code>features.show_onboarding</code></td><td>bool</td><td>Show onboarding for new users</td></tr>
+          <tr><td><code>features.maintenance_mode</code></td><td>bool</td><td>Quick maintenance toggle (also available in config.json)</td></tr>
+          <tr><td><code>features.kill_switch</code></td><td>bool</td><td>Emergency: completely disable the app</td></tr>
+          <tr><td><code>custom_flags</code></td><td>object</td><td>Add any custom key-value pairs for your app</td></tr>
+          <tr><td><code>remote_config.cache_duration_minutes</code></td><td>int</td><td>How long to cache the features response</td></tr>
+          <tr><td><code>remote_config.force_refresh</code></td><td>bool</td><td>Force all clients to re-fetch immediately</td></tr>
+        </table>
+
+        <div class="doc-alert doc-alert-tip">
+          <strong>Custom Flags</strong>
+          Use <code>custom_flags</code> for any app-specific toggles. Example: <code>"enable_dark_mode": true</code>, <code>"max_goals": 10</code>. Your app reads these and acts accordingly.
+        </div>
+      </div>
+
+      <!-- ADDING A NEW APP -->
+      <div class="doc-section fi" id="new-app">
+        <h2>Adding a New App</h2>
+        <p>When you launch a new Android app, follow these steps to add it to the Kive Apps hub:</p>
+        <ol>
+          <li><strong>Create API directory:</strong> <code>api/v1/apps/{new-app-slug}/</code></li>
+          <li><strong>Copy all 5 JSON files</strong> from an existing app's folder and customize them</li>
+          <li><strong>Create HTML pages</strong> (privacy, support, updates) either per-app or shared</li>
+          <li><strong>Add app icon</strong> to the project (e.g. <code>apps/{slug}/icon.png</code>)</li>
+          <li><strong>Update home page</strong> (<code>index.html</code>) to list the new app in the apps grid</li>
+          <li><strong>Update this docs page</strong> to include the new app's API base URL</li>
+          <li><strong>In the Android app</strong>, point API calls to: <code>https://kiveapps.github.io/api/v1/apps/{slug}/</code></li>
+        </ol>
+
+        <h3>Naming Convention</h3>
+        <table class="doc-table">
+          <tr><th>Item</th><th>Format</th><th>Example</th></tr>
+          <tr><td>App slug</td><td>lowercase-kebab-case</td><td><code>lifemaster-ai</code></td></tr>
+          <tr><td>App ID</td><td>Reverse domain</td><td><code>com.kive.lifemaster</code></td></tr>
+          <tr><td>API path</td><td>/api/v1/apps/{slug}/</td><td><code>/api/v1/apps/lifemaster-ai/</code></td></tr>
+        </table>
+      </div>
+
+      <!-- FORCE UPDATE FLOW -->
+      <div class="doc-section fi" id="force-update">
+        <h2>Force Update Flow</h2>
+        <p>Step-by-step guide for pushing a mandatory update to all users:</p>
+        <ol>
+          <li>Publish new APK/AAB to Google Play Store</li>
+          <li>Wait for Play Store to process (usually 1-4 hours)</li>
+          <li>Edit <code>api/v1/apps/{slug}/config.json</code>:
+            <div class="code-block"><span class="c">// Update these fields:</span>
+<span class="k">"version"</span>: {
+  <span class="k">"latest"</span>: <span class="s">"2.0.0"</span>,
+  <span class="k">"latest_code"</span>: <span class="n">10</span>,
+  <span class="k">"min_supported"</span>: <span class="s">"2.0.0"</span>,     <span class="c">// Set to new version for mandatory</span>
+  <span class="k">"min_supported_code"</span>: <span class="n">10</span>        <span class="c">// All older versions blocked</span>
+},
+<span class="k">"update"</span>: {
+  <span class="k">"mandatory"</span>: <span class="b">true</span>,
+  <span class="k">"message"</span>: <span class="s">"This update includes critical fixes. Please update to continue."</span>
+}</div>
+          </li>
+          <li>Commit and push to GitHub</li>
+          <li>Within minutes, all users on older versions will see a non-dismissible update dialog</li>
+        </ol>
+
+        <h3>Soft (Recommended) Update</h3>
+        <p>For non-critical updates, use a softer approach:</p>
+        <div class="code-block"><span class="k">"update"</span>: {
+  <span class="k">"mandatory"</span>: <span class="b">false</span>,
+  <span class="k">"recommended"</span>: <span class="b">true</span>,
+  <span class="k">"message"</span>: <span class="s">"A new version is available with improvements!"</span>,
+  <span class="k">"dismiss_for_days"</span>: <span class="n">3</span>     <span class="c">// Show again after 3 days if dismissed</span>
+}</div>
+      </div>
+
+      <!-- ANNOUNCEMENT GUIDE -->
+      <div class="doc-section fi" id="announcement-guide">
+        <h2>Announcement Guide</h2>
+        <p>Common scenarios and how to configure them:</p>
+
+        <h3>Welcome Banner for New Users</h3>
+        <div class="code-block">{
+  <span class="k">"id"</span>: <span class="s">"welcome-new-users"</span>,
+  <span class="k">"type"</span>: <span class="s">"info"</span>,
+  <span class="k">"title"</span>: <span class="s">"Welcome!"</span>,
+  <span class="k">"message"</span>: <span class="s">"Thanks for joining. Tap here to get started."</span>,
+  <span class="k">"display"</span>: { <span class="k">"style"</span>: <span class="s">"card"</span>, <span class="k">"show_once"</span>: <span class="b">true</span> },
+  <span class="k">"targeting"</span>: { <span class="k">"new_users_only"</span>: <span class="b">true</span> },
+  <span class="k">"active"</span>: <span class="b">true</span>
+}</div>
+
+        <h3>Time-Limited Event</h3>
+        <div class="code-block">{
+  <span class="k">"id"</span>: <span class="s">"diwali-2026"</span>,
+  <span class="k">"type"</span>: <span class="s">"event"</span>,
+  <span class="k">"title"</span>: <span class="s">"Happy Diwali! 🪔"</span>,
+  <span class="k">"message"</span>: <span class="s">"Wishing you light, joy, and discipline this Diwali."</span>,
+  <span class="k">"display"</span>: { <span class="k">"style"</span>: <span class="s">"banner"</span>, <span class="k">"max_impressions"</span>: <span class="n">3</span> },
+  <span class="k">"schedule"</span>: {
+    <span class="k">"start_date"</span>: <span class="s">"2026-10-19T00:00:00+05:30"</span>,
+    <span class="k">"end_date"</span>: <span class="s">"2026-10-22T23:59:59+05:30"</span>
+  },
+  <span class="k">"active"</span>: <span class="b">true</span>
+}</div>
+
+        <h3>Disable an Announcement</h3>
+        <p>Set <code>"active": false</code> — it will immediately stop showing for all users.</p>
+      </div>
+
+      <!-- POPUP GUIDE -->
+      <div class="doc-section fi" id="popup-guide">
+        <h2>Remote Popup Guide</h2>
+        <p>Popups are more attention-grabbing than announcements. Use them sparingly for important messages.</p>
+
+        <h3>When to Use What</h3>
+        <table class="doc-table">
+          <tr><th>Use Case</th><th>Recommended</th></tr>
+          <tr><td>General information</td><td>Announcement (banner)</td></tr>
+          <tr><td>Important message requiring action</td><td>Popup (dialog)</td></tr>
+          <tr><td>Mandatory update</td><td>Popup (force_update) + config.json</td></tr>
+          <tr><td>Survey or feedback</td><td>Popup (survey)</td></tr>
+          <tr><td>What's new after update</td><td>Popup (changelog)</td></tr>
+          <tr><td>Rate the app</td><td>Popup (rating) or features.json config</td></tr>
+          <tr><td>Background notification</td><td>notifications.json</td></tr>
+        </table>
+      </div>
+
+      <!-- EMAIL ROUTING -->
+      <div class="doc-section fi" id="email-routing">
+        <h2>Email Routing</h2>
+        <p>The contact page uses Gmail's <code>+</code> aliasing to route emails while showing users a single clean address.</p>
+
+        <table class="doc-table">
+          <tr><th>Purpose</th><th>User Sees</th><th>Actual Recipient</th></tr>
+          <tr><td>Support</td><td><code>kive.apps@gmail.com</code></td><td><code>kive.apps+support@gmail.com</code></td></tr>
+          <tr><td>Contact Us</td><td><code>kive.apps@gmail.com</code></td><td><code>kive.apps+contactus@gmail.com</code></td></tr>
+          <tr><td>Privacy inquiries</td><td><code>kive.apps@gmail.com</code></td><td><code>kive.apps+support@gmail.com</code></td></tr>
+        </table>
+
+        <p>All emails arrive at <code>kive.apps@gmail.com</code>. Use Gmail filters to auto-label them:</p>
+        <div class="code-block"><span class="c">// Gmail Filter 1: Support</span>
+To: kive.apps+support@gmail.com
+Label: Kive/Support
+
+<span class="c">// Gmail Filter 2: Contact Us</span>
+To: kive.apps+contactus@gmail.com
+Label: Kive/ContactUs</div>
+      </div>
+
+      <!-- ANDROID INTEGRATION -->
+      <div class="doc-section fi" id="android-integration">
+        <h2>Android Integration Guide</h2>
+        <p>How to integrate the remote config system into your Android app.</p>
+
+        <h3>1. Define API Constants</h3>
+        <div class="code-block"><span class="k">object</span> KiveApi {
+    <span class="k">private const val</span> BASE = <span class="s">"https://kiveapps.github.io/api/v1/apps/"</span>
+
+    <span class="k">fun</span> configUrl(slug: String) = <span class="s">"$BASE$slug/config.json"</span>
+    <span class="k">fun</span> announcementsUrl(slug: String) = <span class="s">"$BASE$slug/announcements.json"</span>
+    <span class="k">fun</span> notificationsUrl(slug: String) = <span class="s">"$BASE$slug/notifications.json"</span>
+    <span class="k">fun</span> popupsUrl(slug: String) = <span class="s">"$BASE$slug/popups.json"</span>
+    <span class="k">fun</span> featuresUrl(slug: String) = <span class="s">"$BASE$slug/features.json"</span>
+}</div>
+
+        <h3>2. Fetch on App Startup</h3>
+        <div class="code-block"><span class="c">// In your Application class or splash screen</span>
+<span class="k">suspend fun</span> fetchRemoteConfig() {
+    <span class="k">try</span> {
+        <span class="k">val</span> config = httpClient.get(KiveApi.configUrl(<span class="s">"lifemaster-ai"</span>))
+        <span class="k">val</span> features = httpClient.get(KiveApi.featuresUrl(<span class="s">"lifemaster-ai"</span>))
+        <span class="k">val</span> announcements = httpClient.get(KiveApi.announcementsUrl(<span class="s">"lifemaster-ai"</span>))
+        <span class="k">val</span> popups = httpClient.get(KiveApi.popupsUrl(<span class="s">"lifemaster-ai"</span>))
+
+        <span class="c">// Cache locally</span>
+        configStore.save(config)
+        featureStore.save(features)
+        announcementStore.save(announcements)
+        popupStore.save(popups)
+    } <span class="k">catch</span> (e: Exception) {
+        <span class="c">// Use cached values — app works offline</span>
+    }
+}</div>
+
+        <h3>3. Processing Priority</h3>
+        <div class="code-block"><span class="c">// Recommended check order on app startup:</span>
+<span class="n">1.</span> Kill switch       → features.kill_switch
+<span class="n">2.</span> Maintenance        → config.maintenance.enabled
+<span class="n">3.</span> Mandatory update   → config.version.min_supported_code
+<span class="n">4.</span> Recommended update → config.update.recommended
+<span class="n">5.</span> Popups             → popups (filtered by targeting)
+<span class="n">6.</span> Announcements      → announcements (filtered by targeting)
+<span class="n">7.</span> Notifications      → notifications (schedule locally)</div>
+
+        <h3>4. Caching Strategy</h3>
+        <ul>
+          <li>Cache all responses locally (SharedPreferences or DataStore)</li>
+          <li>Use <code>features.remote_config.cache_duration_minutes</code> to control refresh interval</li>
+          <li>Always fall back to cached data if network fails</li>
+          <li>Default values should be hardcoded in the app as ultimate fallback</li>
+        </ul>
+
+        <div class="doc-alert doc-alert-tip">
+          <strong>GitHub Pages CDN</strong>
+          GitHub Pages is served via Fastly CDN with good global performance. JSON files are small (&lt;5KB each) so fetching is fast. Cache headers are ~10 minutes by default.
+        </div>
+      </div>
+
+    </div><!-- /docs-content -->
+  </div><!-- /docs-layout -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/privacy/" class="footer-link">Privacy Policy</a>
+        <a href="/support/" class="footer-link">Support</a>
+        <a href="/contact/" class="footer-link">Contact</a>
+        <a href="/updates/" class="footer-link">Updates</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 <a href="/">Kive Apps</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* Fade in */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+}, { threshold: .05, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+/* Active sidebar link on scroll */
+const sections = document.querySelectorAll('.doc-section[id]');
+const sidebarLinks = document.querySelectorAll('.sidebar-link[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  sidebarLinks.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>

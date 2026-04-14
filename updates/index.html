@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A1A14">
+<meta name="description" content="LifeMaster AI release notes and changelog — see what's new in every update.">
+<title>Updates — LifeMaster AI — Kive Apps</title>
+<link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+.updates-hero{
+  padding:60px 20px 48px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(12,26,18,0.4);
+  position:relative;z-index:1;
+}
+.updates-hero .app-icon{
+  width:64px;height:64px;border-radius:16px;
+  display:block;margin:0 auto 16px;
+  background:linear-gradient(145deg,#112018,#060E08);
+  animation:heroFloat 7s ease-in-out infinite;
+}
+.updates-hero h1{
+  font-size:clamp(26px,5vw,34px);font-weight:700;
+  color:var(--white);letter-spacing:-.4px;margin-bottom:8px;
+}
+.updates-hero p{font-size:14px;color:var(--text2)}
+
+.updates-page{
+  position:relative;z-index:1;
+  max-width:640px;margin:0 auto;
+  padding:40px 20px 80px;
+}
+
+/* Version card */
+.version-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:24px;margin-bottom:16px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.version-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+.version-num{
+  font-size:14px;font-weight:700;color:var(--teal);
+  background:rgba(77,182,172,0.1);
+  border:1px solid rgba(77,182,172,0.18);
+  border-radius:8px;padding:5px 12px;
+}
+.version-date{font-size:12px;color:var(--text3);flex:1}
+.version-tag{
+  font-size:10px;font-weight:700;
+  padding:3px 10px;border-radius:20px;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+.tag-latest{background:rgba(77,182,172,0.1);color:var(--teal);border:1px solid rgba(77,182,172,0.18)}
+.tag-stable{background:rgba(129,199,132,0.1);color:var(--green);border:1px solid rgba(129,199,132,0.18)}
+
+.change-group{margin-bottom:14px}
+.change-group:last-child{margin-bottom:0}
+.change-type{
+  font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;
+}
+.type-new{color:var(--green)}
+.type-improved{color:var(--blue)}
+.type-fixed{color:var(--orange)}
+.type-removed{color:var(--red)}
+
+.change-list{list-style:none;padding:0}
+.change-list li{
+  font-size:14px;color:var(--text2);
+  padding:5px 0 5px 20px;
+  position:relative;line-height:1.6;
+}
+.change-list li::before{
+  content:'';position:absolute;left:0;top:13px;
+  width:6px;height:6px;border-radius:50%;
+}
+.type-new + .change-list li::before{background:var(--green)}
+.type-improved + .change-list li::before{background:var(--blue)}
+.type-fixed + .change-list li::before{background:var(--orange)}
+.type-removed + .change-list li::before{background:var(--red)}
+
+.no-updates{
+  text-align:center;padding:48px 20px;
+  border:2px dashed rgba(77,182,172,0.12);
+  border-radius:var(--radius-lg);
+}
+.no-updates p{color:var(--text3);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-brand-icon">K</div>
+      <span class="nav-brand-text">Kive Apps</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/privacy/" class="nav-link">Privacy</a>
+      <a href="/support/" class="nav-link">Support</a>
+      <a href="/contact/" class="nav-link">Contact</a>
+      <a href="/docs/" class="nav-link">Docs</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/privacy/" class="nav-link">Privacy</a>
+  <a href="/support/" class="nav-link">Support</a>
+  <a href="/contact/" class="nav-link">Contact</a>
+  <a href="/docs/" class="nav-link">Docs</a>
+</div>
+
+<!-- HERO -->
+<div class="updates-hero fi">
+  <img class="app-icon" src="../icon.png" alt="LifeMaster AI" onerror="this.style.opacity='0.5'">
+  <span class="hero-badge">LifeMaster AI</span>
+  <h1>Release Notes</h1>
+  <p>Everything new, improved, and fixed — in every update.</p>
+</div>
+
+<div class="updates-page">
+
+  <!-- v1.0.0 -->
+  <div class="version-card fi">
+    <div class="version-header">
+      <span class="version-num">v1.0.0</span>
+      <span class="version-date">April 1, 2026</span>
+      <span class="version-tag tag-latest">Latest</span>
+    </div>
+    <div class="change-group">
+      <p class="change-type type-new">New</p>
+      <ul class="change-list">
+        <li>Initial release of LifeMaster AI</li>
+        <li>Goal setting and tracking with daily scoring</li>
+        <li>Habit builder with streaks and statistics</li>
+        <li>Focus Timer with customizable sessions</li>
+        <li>Daily journal with mood tracking</li>
+        <li>Addiction recovery toolkit with urge management</li>
+        <li>AI-powered coaching and insights</li>
+        <li>Full offline functionality — no internet needed</li>
+        <li>Encrypted local backup and restore</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Placeholder for future versions -->
+  <div class="no-updates fi">
+    <p>🎉 You're all caught up!<br>Future updates will appear here.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/privacy/" class="footer-link">Privacy Policy</a>
+        <a href="/support/" class="footer-link">Support</a>
+        <a href="/contact/" class="footer-link">Contact</a>
+        <a href="/docs/" class="footer-link">Docs</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 <a href="/">Kive Apps</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
