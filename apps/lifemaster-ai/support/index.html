@@ -10,291 +10,94 @@
 <meta property="og:title" content="The AI is Free. The Human Needs Chai.">
 <meta property="og:description" content="One person built LifeMaster AI. No team. No investors. Just discipline and chai.">
 <title>Chai for the Dev — LifeMaster AI — Kive Apps</title>
-<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../../../assets/css/shared.css">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-:root{
-  --bg:#0A1A14;
-  --surface:rgba(15,32,22,0.85);
-  --border:rgba(77,182,172,0.13);
-  --teal:#4DB6AC;
-  --teal-dk:#38A09A;
-  --gold:#F5C842;
-  --gold2:#FFD700;
-  --chai:#D4843A;
-  --chai-light:#E8A55A;
-  --text:#C2DDD6;
-  --text2:#7FA99E;
-  --text3:#3E6558;
-  --white:#FFFFFF;
-}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,sans-serif;
-  background:var(--bg);color:var(--text);
-  min-height:100vh;min-height:100dvh;
-  overflow-x:hidden;-webkit-font-smoothing:antialiased;
-}
-
-/* ── AMBIENT ── */
-.bg-glow{
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% -10%,rgba(77,182,172,0.07) 0%,transparent 70%),
-    radial-gradient(ellipse 50% 35% at 50% 110%,rgba(212,132,58,0.05) 0%,transparent 70%);
-  animation:bgb 14s ease-in-out infinite alternate;
-}
-@keyframes bgb{0%{opacity:.65}100%{opacity:1}}
 .pts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .pt{position:absolute;border-radius:50%;animation:rise linear infinite;will-change:transform,opacity}
-@keyframes rise{
-  0%{transform:translateY(105vh) scale(0);opacity:0}
-  8%{opacity:1}92%{opacity:.5}
-  100%{transform:translateY(-5vh) scale(1);opacity:0}
-}
+@keyframes rise{0%{transform:translateY(105vh) scale(0);opacity:0}8%{opacity:1}92%{opacity:.5}100%{transform:translateY(-5vh) scale(1);opacity:0}}
 
-/* ── LAYOUT ── */
 .page{position:relative;z-index:1;max-width:450px;margin:0 auto;padding:0 20px 72px}
 
-/* ── HERO ── */
 .hero{text-align:center;padding:52px 0 28px}
-.icon-ring{
-  position:relative;display:inline-flex;
-  align-items:center;justify-content:center;
-  width:100px;height:100px;margin-bottom:22px;
-}
-.icon-ring::before{
-  content:'';position:absolute;inset:-4px;border-radius:28px;
-  background:conic-gradient(from 180deg,var(--teal),var(--gold2),var(--chai),var(--teal));
-  opacity:0;filter:blur(8px);
-  animation:halo 5s ease-in-out infinite;z-index:-1;
-}
+.icon-ring{position:relative;display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;margin-bottom:22px}
+.icon-ring::before{content:'';position:absolute;inset:-4px;border-radius:28px;background:conic-gradient(from 180deg,var(--teal),var(--gold),#D4843A,var(--teal));opacity:0;filter:blur(8px);animation:halo 5s ease-in-out infinite;z-index:-1}
 @keyframes halo{0%,100%{opacity:0;transform:rotate(0deg)}50%{opacity:.28;transform:rotate(180deg)}}
-.app-icon{
-  width:100px;height:100px;border-radius:24px;display:block;
-  background:linear-gradient(145deg,#112018,#060E08);
-  animation:flt 7s ease-in-out infinite;
-}
+.app-icon{width:100px;height:100px;border-radius:24px;display:block;background:linear-gradient(145deg,#112018,#060E08);animation:flt 7s ease-in-out infinite}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.app-name{
-  font-size:clamp(24px,6vw,30px);font-weight:700;
-  color:var(--white);letter-spacing:-.5px;margin-bottom:6px;
-}
+.app-name{font-size:clamp(24px,6vw,30px);font-weight:700;color:var(--white);letter-spacing:-.5px;margin-bottom:6px}
 .app-tag{font-size:13px;font-weight:500;color:var(--teal);margin-bottom:10px}
 .app-chips{display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.chip{
-  font-size:11px;color:var(--text3);
-  background:rgba(77,182,172,0.06);
-  border:1px solid rgba(77,182,172,0.1);
-  border-radius:20px;padding:3px 10px;
-}
+.chip{font-size:11px;color:var(--text3);background:rgba(77,182,172,0.06);border:1px solid rgba(77,182,172,0.1);border-radius:20px;padding:3px 10px}
 
-/* ── CHAI HEADLINE ── */
-.chai-hero{
-  text-align:center;padding:4px 4px 28px;
-}
-.chai-headline{
-  font-size:clamp(22px,5.5vw,28px);font-weight:700;
-  color:var(--white);line-height:1.3;
-  letter-spacing:-.4px;margin-bottom:12px;
-}
-.chai-headline em{
-  font-style:normal;
-  background:linear-gradient(135deg,var(--chai-light),var(--gold2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
+.chai-hero{text-align:center;padding:4px 4px 28px}
+.chai-headline{font-size:clamp(22px,5.5vw,28px);font-weight:700;color:var(--white);line-height:1.3;letter-spacing:-.4px;margin-bottom:12px}
+.chai-headline em{font-style:normal;background:linear-gradient(135deg,#E8A55A,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .chai-sub{font-size:15px;color:var(--text2);line-height:1.8}
 .chai-sub strong{color:var(--text);font-weight:600}
 
-/* ── CARD ── */
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:20px;padding:20px;margin-bottom:12px;
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-}
-.card-lbl{
-  font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.11em;color:var(--teal);margin-bottom:15px;
-}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:12px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.card-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--teal);margin-bottom:15px}
 
-/* ── AMOUNTS ── */
+.chai-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.chai-fact{background:rgba(10,26,20,.5);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.fact-num{font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.fact-lbl{font-size:11px;color:var(--text3);line-height:1.4}
+
 .amt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.amt-btn{
-  background:rgba(10,26,20,0.6);
-  border:1.5px solid rgba(77,182,172,0.15);
-  border-radius:13px;padding:14px 4px 11px;
-  font-size:17px;font-weight:700;color:var(--teal);
-  cursor:pointer;text-align:center;font-family:inherit;line-height:1;
-  transition:all .2s ease;-webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-}
+.amt-btn{background:rgba(10,26,20,0.6);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:14px 4px 11px;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;text-align:center;font-family:inherit;line-height:1;transition:all .2s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .amt-sym{display:block;font-size:10px;font-weight:500;opacity:.55;margin-bottom:3px}
 .amt-btn:hover{border-color:var(--teal);background:rgba(77,182,172,0.08)}
-.amt-btn.on{
-  background:linear-gradient(135deg,#4DB6AC,#38A09A);
-  border-color:transparent;color:#081410;
-  box-shadow:0 4px 20px rgba(77,182,172,0.32);
-}
+.amt-btn.on{background:linear-gradient(135deg,#4DB6AC,#38A09A);border-color:transparent;color:#081410;box-shadow:0 4px 20px rgba(77,182,172,0.32)}
 .amt-btn:active{transform:scale(.95)}
-
-/* Amount chai labels */
-.amt-chai{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:8px;margin-top:6px;margin-bottom:14px;
-}
-.amt-chai-lbl{
-  font-size:9px;color:var(--text3);text-align:center;
-  line-height:1.3;letter-spacing:.01em;
-}
-
+.amt-chai{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px;margin-bottom:14px}
+.amt-chai-lbl{font-size:9px;color:var(--text3);text-align:center;line-height:1.3;letter-spacing:.01em}
 .custom-row{display:flex;gap:8px}
-.custom-in{
-  flex:1;min-width:0;
-  background:rgba(10,26,20,0.6);border:1.5px solid rgba(77,182,172,0.15);
-  border-radius:13px;padding:13px 14px;
-  font-size:15px;color:var(--white);outline:none;font-family:inherit;
-  transition:border-color .2s;
-}
+.custom-in{flex:1;min-width:0;background:rgba(10,26,20,0.6);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:13px 14px;font-size:15px;color:var(--white);outline:none;font-family:inherit;transition:border-color .2s}
 .custom-in:focus{border-color:var(--teal)}
 .custom-in::placeholder{color:rgba(77,182,172,0.2)}
-.go-btn{
-  flex-shrink:0;background:rgba(77,182,172,0.1);
-  border:1.5px solid rgba(77,182,172,0.2);border-radius:13px;
-  padding:13px 18px;font-size:13px;font-weight:700;color:var(--teal);
-  cursor:pointer;font-family:inherit;transition:all .2s;
-  white-space:nowrap;touch-action:manipulation;
-}
+.go-btn{flex-shrink:0;background:rgba(77,182,172,0.1);border:1.5px solid rgba(77,182,172,0.2);border-radius:13px;padding:13px 18px;font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;touch-action:manipulation}
 .go-btn:hover{background:rgba(77,182,172,0.18)}
 .go-btn:active{transform:scale(.97)}
 
-/* ── PAY BUTTON ── */
-.pay-now{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  width:100%;padding:17px 20px;
-  background:linear-gradient(135deg,var(--teal),var(--teal-dk));
-  border:none;border-radius:16px;
-  font-size:16px;font-weight:700;color:#081410;
-  cursor:pointer;font-family:inherit;text-decoration:none;
-  transition:all .2s;-webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-  box-shadow:0 4px 28px rgba(77,182,172,0.28);
-  position:relative;overflow:hidden;margin-bottom:10px;
-}
-.pay-now::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.13),transparent);
-  pointer-events:none;
-}
+.pay-now{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px 20px;background:linear-gradient(135deg,var(--teal),#38A09A);border:none;border-radius:16px;font-size:16px;font-weight:700;color:#081410;cursor:pointer;font-family:inherit;text-decoration:none;transition:all .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-shadow:0 4px 28px rgba(77,182,172,0.28);position:relative;overflow:hidden;margin-bottom:10px}
+.pay-now::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.13),transparent);pointer-events:none}
 .pay-now:active{transform:scale(.98);box-shadow:0 2px 14px rgba(77,182,172,.2)}
-.pay-now:hover{box-shadow:0 6px 32px rgba(77,182,172,.38)}
+.pay-now:hover{box-shadow:0 6px 32px rgba(77,182,172,.38);opacity:1;color:#081410}
 .pay-emoji{font-size:18px}
 .pay-note{font-size:12px;color:var(--text3);text-align:center;line-height:1.55;margin-bottom:16px}
 
-/* ── OR ── */
-.or{
-  display:flex;align-items:center;gap:12px;margin:16px 0;
-  color:var(--text3);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
-}
+.or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--text3);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
 .or::before,.or::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* ── QR ── */
 .qr-wrap{text-align:center}
 .qr-hint{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.55}
-.qr-card{
-  display:inline-block;background:#fff;border-radius:18px;
-  padding:14px;margin-bottom:12px;
-  box-shadow:0 2px 40px rgba(212,132,58,0.1),0 0 0 1px rgba(255,255,255,.06);
-}
+.qr-card{display:inline-block;background:#fff;border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 2px 40px rgba(212,132,58,0.1),0 0 0 1px rgba(255,255,255,.06)}
 #qrcode canvas,#qrcode img{display:block;border-radius:6px}
 .qr-lbl{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:4px}
 .qr-sub{font-size:11px;color:var(--text3);line-height:1.7}
 
-/* ── UPI COPY ── */
-.upi-bar{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(10,26,20,.65);border:1px solid var(--border);
-  border-radius:13px;padding:13px 14px;margin-bottom:8px;
-}
-.upi-id{
-  flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--white);
-  font-family:'SF Mono','Fira Code','Courier New',monospace;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.copy-btn{
-  flex-shrink:0;background:rgba(77,182,172,.1);
-  border:1px solid rgba(77,182,172,.22);border-radius:9px;
-  padding:9px 16px;font-size:12px;font-weight:700;color:var(--teal);
-  cursor:pointer;font-family:inherit;white-space:nowrap;
-  transition:all .2s;touch-action:manipulation;
-}
+.upi-bar{display:flex;align-items:center;gap:10px;background:rgba(10,26,20,.65);border:1px solid var(--border);border-radius:13px;padding:13px 14px;margin-bottom:8px}
+.upi-id{flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--white);font-family:'SF Mono','Fira Code','Courier New',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.copy-btn{flex-shrink:0;background:rgba(77,182,172,.1);border:1px solid rgba(77,182,172,.22);border-radius:9px;padding:9px 16px;font-size:12px;font-weight:700;color:var(--teal);cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s;touch-action:manipulation}
 .copy-btn:hover{background:rgba(77,182,172,.18)}
 .copy-btn.ok{background:var(--teal);color:#081410;border-color:transparent}
 .upi-sub{font-size:11px;color:var(--text3);line-height:1.55;padding:0 2px}
 
-/* ── STEPS ── */
 .steps-list{display:flex;flex-direction:column;gap:16px}
 .step-row{display:flex;gap:14px;align-items:flex-start}
-.step-n{
-  width:30px;height:30px;border-radius:50%;
-  background:rgba(77,182,172,.08);border:1px solid rgba(77,182,172,.18);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;color:var(--teal);
-  flex-shrink:0;margin-top:2px;
-}
+.step-n{width:30px;height:30px;border-radius:50%;background:rgba(77,182,172,.08);border:1px solid rgba(77,182,172,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--teal);flex-shrink:0;margin-top:2px}
 .step-body{flex:1}
 .step-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
 .step-desc{font-size:13px;color:var(--text2);line-height:1.6}
 
-/* ── CHAI FACTS ── */
-.chai-facts{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
-  margin-bottom:12px;
-}
-.chai-fact{
-  background:rgba(10,26,20,.5);border:1px solid var(--border);
-  border-radius:14px;padding:14px;text-align:center;
-}
-.fact-num{
-  font-size:22px;font-weight:700;
-  background:linear-gradient(135deg,var(--teal),var(--gold));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;margin-bottom:4px;
-}
-.fact-lbl{font-size:11px;color:var(--text3);line-height:1.4}
-
-/* ── THANK YOU ── */
 .ty{text-align:center;padding:32px 16px 8px}
 .ty-icon{font-size:38px;display:block;margin-bottom:14px;animation:pulse 3.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .ty-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;letter-spacing:-.2px}
 .ty-text{font-size:14px;color:var(--text3);line-height:1.9}
 
-/* ── FOOTER ── */
-footer{
-  text-align:center;padding:24px 0 0;
-  font-size:12px;color:var(--text3);
-  border-top:1px solid var(--border);
-  margin-top:28px;line-height:2.4;
-}
-footer a{color:var(--teal);text-decoration:none}
-footer a:hover{opacity:.8}
-
-/* ── FADE IN ── */
-.fi{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.fi.show{opacity:1;transform:translateY(0)}
-
-/* ── RESPONSIVE ── */
 @media(max-width:360px){.amt-btn{font-size:15px}.pay-now{font-size:15px}}
-@media(min-width:600px){
-  .page{padding:0 28px 80px}
-  .hero{padding:72px 0 36px}
-  .app-icon{width:112px;height:112px}
-  .icon-ring{width:112px;height:112px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-}
+@media(min-width:600px){.page{padding:0 28px 80px}.hero{padding:72px 0 36px}.app-icon{width:112px;height:112px}.icon-ring{width:112px;height:112px}}
 </style>
 </head>
 <body>
@@ -311,9 +114,9 @@ footer a:hover{opacity:.8}
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link">Home</a>
-      <a href="/privacy/" class="nav-link">Privacy</a>
-      <a href="/support/" class="nav-link active">Support</a>
-      <a href="/contact/" class="nav-link">Contact</a>
+      <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+      <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
+      <a href="/apps/lifemaster-ai/support/" class="nav-link active">Support</a>
       <a href="/docs/" class="nav-link">Docs</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
@@ -323,9 +126,9 @@ footer a:hover{opacity:.8}
 </nav>
 <div class="nav-mobile" id="mobileMenu">
   <a href="/" class="nav-link">Home</a>
-  <a href="/privacy/" class="nav-link">Privacy</a>
-  <a href="/support/" class="nav-link active">Support</a>
-  <a href="/contact/" class="nav-link">Contact</a>
+  <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+  <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
+  <a href="/apps/lifemaster-ai/support/" class="nav-link active">Support</a>
   <a href="/docs/" class="nav-link">Docs</a>
 </div>
 
@@ -334,8 +137,7 @@ footer a:hover{opacity:.8}
   <!-- HERO -->
   <div class="hero fi">
     <div class="icon-ring">
-      <img class="app-icon" src="../icon.png" alt="LifeMaster AI"
-        onerror="this.style.opacity='0.5'">
+      <img class="app-icon" src="../icon.png" alt="LifeMaster AI" onerror="this.src='../../../icon.png'">
     </div>
     <h1 class="app-name">LifeMaster AI</h1>
     <p class="app-tag">The Discipline OS for Focus, Recovery &amp; Growth</p>
@@ -439,16 +241,17 @@ footer a:hover{opacity:.8}
     <p class="ty-text">Seriously. This means everything.<br>Every chai you send goes straight into<br>new features, better coaching, and making sure<br>LifeMaster AI stays free for everyone — always.</p>
   </div>
 
+  <!-- FOOTER -->
   <footer class="footer fi">
     <div class="footer-inner">
       <div class="footer-links">
         <a href="/" class="footer-link">Home</a>
-        <a href="/privacy/" class="footer-link">Privacy Policy</a>
-        <a href="/contact/" class="footer-link">Contact</a>
-        <a href="/updates/" class="footer-link">Updates</a>
-        <a href="/docs/" class="footer-link">Docs</a>
+        <a href="/apps/lifemaster-ai/" class="footer-link">LifeMaster AI</a>
+        <a href="../privacy/" class="footer-link">Privacy Policy</a>
+        <a href="../contact/" class="footer-link">Contact</a>
+        <a href="../updates/" class="footer-link">Updates</a>
       </div>
-      <p class="footer-copy">LifeMaster AI &nbsp;·&nbsp; <a href="/">Kive Apps</a></p>
+      <p class="footer-copy">LifeMaster AI · <a href="/">Kive Apps</a></p>
       <p class="footer-copy">&copy; 2026 Kive Apps. All rights reserved.</p>
     </div>
   </footer>

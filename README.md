@@ -6,7 +6,7 @@ Central hub for all Kive Apps Android applications. Serves as a public website, 
 
 ## What This Does
 
-- **Public Website** — Home page, privacy policies, support pages, contact forms
+- **Public Website** — Home page, app landing pages, privacy policies, support pages
 - **JSON API Center** — Remote config endpoints that Android apps fetch on launch
 - **Remote Control** — Push announcements, trigger updates, show popups, toggle features — without releasing a new app version
 
@@ -16,18 +16,37 @@ Central hub for all Kive Apps Android applications. Serves as a public website, 
 |-----|------|--------|
 | LifeMaster AI | `lifemaster-ai` | Live |
 
+## URL Structure
+
+```
+/                                    → Home (all apps hub)
+/apps/{slug}/                        → App landing page
+/apps/{slug}/privacy/                → App privacy policy
+/apps/{slug}/support/                → App support/donation
+/apps/{slug}/updates/                → App release notes
+/apps/{slug}/contact/                → App contact form
+/api/v1/apps/{slug}/                 → App JSON APIs
+/docs/                               → Developer documentation
+```
+
 ## Project Structure
 
 ```
 ├── index.html                          # Home page
 ├── icon.png                            # Brand icon
+├── _DEVELOPER.md                       # Private docs (excluded from GitHub Pages)
 ├── assets/css/shared.css               # Shared design system
-├── privacy/index.html                  # LifeMaster AI privacy policy
-├── support/index.html                  # LifeMaster AI support/donation
-├── contact/index.html                  # Contact form (email routing)
-├── updates/index.html                  # Release notes / changelog
-├── docs/index.html                     # Developer documentation
-└── api/v1/apps/lifemaster-ai/
+├── docs/index.html                     # Public API documentation
+│
+├── apps/lifemaster-ai/                 # LifeMaster AI app pages
+│   ├── index.html                      # App landing page
+│   ├── icon.png                        # App icon
+│   ├── privacy/index.html              # Privacy policy
+│   ├── support/index.html              # Support/donation
+│   ├── updates/index.html              # Release notes
+│   └── contact/index.html              # Contact form
+│
+└── api/v1/apps/lifemaster-ai/          # LifeMaster AI API
     ├── config.json                     # App config & version control
     ├── announcements.json              # In-app announcements
     ├── notifications.json              # Push notification triggers
@@ -53,15 +72,18 @@ https://kiveapps.github.io/api/v1/apps/{app-slug}/
 
 ## Adding a New App
 
-1. Create `api/v1/apps/{new-slug}/` with all 5 JSON files
-2. Add app pages (privacy, support, etc.)
+1. Create `apps/{new-slug}/` with all HTML pages (copy from existing app)
+2. Create `api/v1/apps/{new-slug}/` with all 5 JSON files
 3. Update home page to list the new app
 4. Point the Android app to `https://kiveapps.github.io/api/v1/apps/{new-slug}/`
 
+**Full instructions:** See [_DEVELOPER.md](_DEVELOPER.md)
+
 ## Documentation
 
-Full developer docs: [https://kiveapps.github.io/docs/](https://kiveapps.github.io/docs/)
+- **Public docs:** [https://kiveapps.github.io/docs/](https://kiveapps.github.io/docs/)
+- **Private docs:** [_DEVELOPER.md](_DEVELOPER.md) (excluded from GitHub Pages)
 
 ---
 
-© 2026 Kive Apps
+ 2026 Kive Apps

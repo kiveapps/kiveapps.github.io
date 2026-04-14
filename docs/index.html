@@ -185,9 +185,7 @@
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link">Home</a>
-      <a href="/privacy/" class="nav-link">Privacy</a>
-      <a href="/support/" class="nav-link">Support</a>
-      <a href="/contact/" class="nav-link">Contact</a>
+      <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
       <a href="/docs/" class="nav-link active">Docs</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
@@ -197,9 +195,7 @@
 </nav>
 <div class="nav-mobile" id="mobileMenu">
   <a href="/" class="nav-link">Home</a>
-  <a href="/privacy/" class="nav-link">Privacy</a>
-  <a href="/support/" class="nav-link">Support</a>
-  <a href="/contact/" class="nav-link">Contact</a>
+  <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
   <a href="/docs/" class="nav-link active">Docs</a>
 </div>
 
@@ -277,26 +273,30 @@
       <div class="doc-section fi" id="structure">
         <h2>Project Structure</h2>
         <div class="code-block">kiveapps.github.io/
-├── index.html                          <span class="c"># Home page</span>
+├── index.html                          <span class="c"># Home page (all apps hub)</span>
 ├── icon.png                            <span class="c"># Brand icon</span>
+├── _DEVELOPER.md                       <span class="c"># Private docs (not on GitHub Pages)</span>
 ├── assets/css/shared.css               <span class="c"># Shared design system</span>
+├── docs/index.html                     <span class="c"># This public documentation</span>
 │
-├── privacy/index.html                  <span class="c"># LifeMaster AI privacy policy</span>
-├── support/index.html                  <span class="c"># LifeMaster AI support/donation</span>
-├── contact/index.html                  <span class="c"># Contact form (routes to email)</span>
-├── updates/index.html                  <span class="c"># Release notes / changelog</span>
-├── docs/index.html                     <span class="c"># This documentation</span>
+├── apps/lifemaster-ai/                 <span class="c"># App-specific pages</span>
+│   ├── index.html                      <span class="c"># App landing page</span>
+│   ├── icon.png                        <span class="c"># App icon</span>
+│   ├── privacy/index.html              <span class="c"># Privacy policy</span>
+│   ├── support/index.html              <span class="c"># Support/donation page</span>
+│   ├── updates/index.html              <span class="c"># Release notes</span>
+│   └── contact/index.html              <span class="c"># Contact form</span>
 │
-├── api/v1/apps/lifemaster-ai/
+├── api/v1/apps/lifemaster-ai/          <span class="c"># App JSON APIs</span>
 │   ├── config.json                     <span class="c"># App config &amp; version control</span>
 │   ├── announcements.json              <span class="c"># In-app announcements</span>
 │   ├── notifications.json              <span class="c"># Push notification triggers</span>
 │   ├── popups.json                     <span class="c"># Remote dialog/popup triggers</span>
 │   └── features.json                   <span class="c"># Feature flags &amp; remote config</span>
 │
-└── <span class="c"># To add another app, create:</span>
-    <span class="c"># api/v1/apps/{new-app-slug}/ with the same JSON files</span>
-    <span class="c"># and corresponding HTML pages</span></div>
+└── <span class="c"># To add another app:</span>
+    <span class="c"># 1. Create apps/{new-slug}/ with HTML pages</span>
+    <span class="c"># 2. Create api/v1/apps/{new-slug}/ with JSON files</span></div>
       </div>
 
       <!-- CONFIG.JSON -->
