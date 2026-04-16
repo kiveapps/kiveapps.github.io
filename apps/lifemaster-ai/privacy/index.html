@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0A1A14">
+<meta name="theme-color" content="#050505">
 <meta name="description" content="LifeMaster AI Privacy Policy — we collect nothing. Your data stays on your phone.">
 <title>Privacy Policy — LifeMaster AI — Kive Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../assets/css/shared.css">
 <style>
 .hero{
   position:relative;z-index:1;
   text-align:center;
-  padding:52px 20px 40px;
+  padding:120px 20px 40px;
   border-bottom:1px solid var(--border);
-  background:rgba(12,26,18,0.6);
+  background:rgba(255,255,255,0.01);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
 .icon-wrap{position:relative;display:inline-block;margin-bottom:18px}
@@ -23,19 +26,19 @@
   animation:iconFloat 7s ease-in-out infinite;
 }
 @keyframes iconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.hero-tag{font-size:12px;font-weight:600;color:var(--teal);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
+.hero-tag{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
 .hero h1{font-size:clamp(26px,6vw,34px);font-weight:700;color:var(--white);letter-spacing:-.4px;margin-bottom:8px}
-.hero-meta{font-size:12px;color:var(--text3)}
+.hero-meta{font-size:12px;color:var(--t3)}
 
 .page{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:32px 20px 80px}
 
 .summary{
-  background:var(--surface);border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
   border-radius:20px;padding:22px;margin-bottom:32px;
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
-.sum-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:16px}
-.sum-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(77,182,172,0.08);font-size:14px;color:var(--text)}
+.sum-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:16px}
+.sum-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(77,182,172,0.08);font-size:14px;color:var(--t1)}
 .sum-item:last-child{border-bottom:none}
 .sum-tick{
   width:22px;height:22px;border-radius:50%;
@@ -53,41 +56,42 @@
 }
 .section-icon svg{width:16px;height:16px;color:var(--teal)}
 h2{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.2px}
-p{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:10px}
+p{font-size:14px;color:var(--t2);line-height:1.85;margin-bottom:10px}
 p:last-child{margin-bottom:0}
 
 .perm-list{display:flex;flex-direction:column;gap:10px}
-.perm-item{background:rgba(12,26,18,0.5);border:1px solid rgba(77,182,172,0.1);border-radius:14px;padding:14px 16px}
-.perm-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:7px}
-.opt-badge{font-size:10px;font-weight:700;background:rgba(77,182,172,0.1);color:var(--teal);border:1px solid rgba(77,182,172,0.18);padding:2px 7px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
-.perm-desc{font-size:13px;color:var(--text2);line-height:1.65;margin:0}
+.perm-item{background:rgba(255,255,255,0.02);border:1px solid rgba(77,182,172,0.1);border-radius:14px;padding:14px 16px}
+.perm-name{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.opt-badge{font-size:10px;font-weight:700;background:rgba(77,182,172,0.1);color:var(--accent);border:1px solid rgba(77,182,172,0.18);padding:2px 7px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase}
+.perm-desc{font-size:13px;color:var(--t2);line-height:1.65;margin:0}
 
 .highlight{background:rgba(77,182,172,0.06);border:1px solid rgba(77,182,172,0.14);border-radius:14px;padding:16px;margin-top:12px}
-.highlight p{font-size:14px;color:var(--text2);margin:0}
+.highlight p{font-size:14px;color:var(--t2);margin:0}
 
 .contact-card{
-  background:var(--surface);border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
   border-radius:18px;padding:20px;text-align:center;
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
-.contact-card p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:14px}
+.contact-card p{color:var(--t2);font-size:14px;line-height:1.7;margin-bottom:14px}
 .email-link{
   display:inline-block;background:rgba(77,182,172,0.1);
   border:1px solid rgba(77,182,172,0.22);border-radius:12px;
-  padding:12px 24px;font-size:14px;font-weight:600;color:var(--teal);
+  padding:12px 24px;font-size:14px;font-weight:600;color:var(--accent);
   text-decoration:none;transition:all .2s;
 }
 .email-link:hover{background:rgba(77,182,172,0.18);opacity:1}
 
-@media(min-width:600px){.hero{padding:64px 24px 44px}.page{padding:40px 32px 80px}}
+@media(min-width:600px){.hero{padding:140px 24px 44px}.page{padding:40px 32px 80px}}
 </style>
 </head>
 <body>
 
+<div class="grain"></div>
 <div class="bg-glow"></div>
 
 <!-- NAVIGATION -->
-<nav class="nav">
+<nav class="nav scrolled">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <div class="nav-brand-icon">K</div>
@@ -96,9 +100,9 @@ p:last-child{margin-bottom:0}
     <div class="nav-links">
       <a href="/" class="nav-link">Home</a>
       <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
-      <a href="/apps/lifemaster-ai/privacy/" class="nav-link active">Privacy</a>
-      <a href="/apps/lifemaster-ai/support/" class="nav-link">Support</a>
-      <a href="/docs/" class="nav-link">Docs</a>
+      <a href="/community/" class="nav-link">Community</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/contact/" class="nav-cta">Contact</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -108,9 +112,9 @@ p:last-child{margin-bottom:0}
 <div class="nav-mobile" id="mobileMenu">
   <a href="/" class="nav-link">Home</a>
   <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
-  <a href="/apps/lifemaster-ai/privacy/" class="nav-link active">Privacy</a>
-  <a href="/apps/lifemaster-ai/support/" class="nav-link">Support</a>
-  <a href="/docs/" class="nav-link">Docs</a>
+  <a href="/community/" class="nav-link">Community</a>
+  <a href="/blog/" class="nav-link">Blog</a>
+  <a href="/contact/" class="nav-link">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -263,27 +267,19 @@ p:last-child{margin-bottom:0}
   </div>
 
   <!-- FOOTER -->
-  <footer class="footer fi">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="/" class="footer-link">Home</a>
-        <a href="/apps/lifemaster-ai/" class="footer-link">LifeMaster AI</a>
-        <a href="../support/" class="footer-link">Support</a>
-        <a href="../contact/" class="footer-link">Contact</a>
-        <a href="../updates/" class="footer-link">Updates</a>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>LifeMaster AI · <a href="/" style="color:var(--accent)">Kive Apps</a> · &copy; 2026</span>
       </div>
-      <p class="footer-copy">LifeMaster AI · <a href="/">Kive Apps</a></p>
-      <p class="footer-copy">&copy; 2026 Kive Apps. All rights reserved.</p>
     </div>
   </footer>
 
 </div>
 
 <script>
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}});
-},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');io.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.fi').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

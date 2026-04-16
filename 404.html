@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="robots" content="noindex">
+<title>404 — Kive Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/shared.css">
+<style>
+.error-page{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:40px 28px;position:relative;z-index:1;
+}
+.error-code{
+  font-size:clamp(80px,20vw,160px);font-weight:900;
+  letter-spacing:-.06em;line-height:1;
+  margin-bottom:16px;
+}
+.error-title{font-size:clamp(20px,4vw,28px);font-weight:700;margin-bottom:12px}
+.error-desc{font-size:16px;color:var(--t2);max-width:400px;margin:0 auto 32px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="bg-glow"></div>
+<div class="error-page">
+  <p class="error-code grad">404</p>
+  <h1 class="error-title">Page Not Found</h1>
+  <p class="error-desc">The page you're looking for doesn't exist or has been moved.</p>
+  <a href="/" class="btn btn-primary btn-lg">Back to Home</a>
+</div>
+</body>
+</html>

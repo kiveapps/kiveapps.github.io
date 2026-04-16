@@ -14,7 +14,7 @@
     "min_supported": "1.0.0",
     "min_supported_code": 1,
     "release_date": "2026-04-01",
-    "release_notes_url": "https://kiveapps.github.io/apps/lifemaster-ai/updates/"
+    "release_notes_url": null
   },
   "update": {
     "mandatory": false,
@@ -33,14 +33,14 @@
     "message": "We're improving things behind the scenes. The app will be back shortly.",
     "estimated_end": null,
     "allow_offline_use": true,
-    "contact_url": "https://kiveapps.github.io/apps/lifemaster-ai/contact/"
+    "contact_url": "https://kiveapps.github.io/contact/"
   },
   "links": {
     "privacy_policy": "https://kiveapps.github.io/apps/lifemaster-ai/privacy/",
     "terms_of_service": null,
     "support": "https://kiveapps.github.io/apps/lifemaster-ai/support/",
-    "contact": "https://kiveapps.github.io/apps/lifemaster-ai/contact/",
-    "updates": "https://kiveapps.github.io/apps/lifemaster-ai/updates/",
+    "contact": "https://kiveapps.github.io/contact/",
+    "community": "https://kiveapps.github.io/community/",
     "website": "https://kiveapps.github.io/apps/lifemaster-ai/",
     "play_store": "https://play.google.com/store/apps/details?id=com.kive.lifemaster",
     "faq": null

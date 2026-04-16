@@ -29,9 +29,12 @@
 ## Project Overview
 
 This GitHub Pages site serves as:
-- **Public website** — Home page, app landing pages, privacy policies, support pages
-- **JSON API center** — Remote configuration endpoints for Android apps
+- **Brand showroom** — Cinematic home page, app showcases, blog, community, contact
+- **App pages** — Dedicated product, privacy, and support pages per app
+- **Internal API center** — Hidden remote config endpoints consumed by Android apps
 - **Control panel** — Edit JSON files to control app behavior without releasing updates
+
+**Security:** API endpoints are blocked from crawlers via `robots.txt`. No public API docs are exposed.
 
 **Live URL:** `https://kiveapps.github.io`
 
@@ -40,15 +43,17 @@ This GitHub Pages site serves as:
 ## URL Structure
 
 ```
-/                                    → Home (all apps hub)
-/apps/{slug}/                        → App landing page
-/apps/{slug}/privacy/                → App privacy policy
-/apps/{slug}/support/                → App support/donation page
-/apps/{slug}/updates/                → App release notes
-/apps/{slug}/contact/                → App contact form
-/api/v1/apps/{slug}/                 → App JSON APIs
-/docs/                               → Public developer documentation
+/                              → Home (cinematic brand showroom)
+/apps/{slug}/                  → App product page
+/apps/{slug}/privacy/          → App privacy policy
+/apps/{slug}/support/          → App support/donation
+/blog/                         → Brand blog
+/community/                    → Community hub
+/contact/                      → Contact form
+/api/v1/apps/{slug}/           → Internal JSON APIs (hidden)
 ```
+
+**Removed pages:** `/docs/`, `/apps/{slug}/updates/`, `/apps/{slug}/contact/` — consolidated into brand-level pages.
 
 ### Current Apps
 
@@ -65,12 +70,10 @@ This GitHub Pages site serves as:
 Create the following folder structure:
 ```
 apps/{new-slug}/
-├── index.html          # App landing page
+├── index.html          # App product page
 ├── icon.png            # App icon (512x512 recommended)
 ├── privacy/index.html  # Privacy policy
-├── support/index.html  # Support/donation page
-├── updates/index.html  # Release notes
-└── contact/index.html  # Contact form
+└── support/index.html  # Support/donation page
 ```
 
 **Tip:** Copy from `apps/lifemaster-ai/` and do find-replace:
@@ -102,28 +105,11 @@ api/v1/apps/{new-slug}/
 
 ### Step 3: Update Home Page
 
-Edit `index.html` and add your app to the apps grid:
+Edit `index.html` and add your app to the showcase section (follow the existing LifeMaster AI card pattern).
 
-```html
-<div class="app-showcase fi">
-  <img class="app-showcase-icon" src="apps/{new-slug}/icon.png" alt="Your App">
-  <div class="app-showcase-body">
-    <h3 class="app-showcase-name">Your App Name</h3>
-    <p class="app-showcase-tag">Your tagline</p>
-    <p class="app-showcase-desc">Your description.</p>
-    <div class="app-showcase-links">
-      <a href="/apps/{new-slug}/" class="app-link">App Page</a>
-      <a href="/apps/{new-slug}/privacy/" class="app-link">Privacy</a>
-      <a href="/apps/{new-slug}/support/" class="app-link">Support</a>
-      <a href="/apps/{new-slug}/updates/" class="app-link">Updates</a>
-    </div>
-  </div>
-</div>
-```
+### Step 4: Update Navigation
 
-### Step 4: Update Navigation (Optional)
-
-If you want the app in the main nav, update the nav links in `index.html` and `docs/index.html`.
+Add the app to the nav in all pages (`index.html`, `blog/`, `community/`, `contact/`, and the new app pages).
 
 ### Step 5: Configure Android App
 
@@ -460,10 +446,10 @@ suspend fun fetchRemoteConfig() {
 /apps/{slug}/               → apps/{slug}/index.html
 /apps/{slug}/privacy/       → apps/{slug}/privacy/index.html
 /apps/{slug}/support/       → apps/{slug}/support/index.html
-/apps/{slug}/updates/       → apps/{slug}/updates/index.html
-/apps/{slug}/contact/       → apps/{slug}/contact/index.html
+/blog/                      → blog/index.html
+/community/                 → community/index.html
+/contact/                   → contact/index.html
 /api/v1/apps/{slug}/*.json  → api/v1/apps/{slug}/*.json
-/docs/                      → docs/index.html
 ```
 
 ### Common Tasks
@@ -476,7 +462,6 @@ suspend fun fetchRemoteConfig() {
 | Add announcement banner | `api/v1/apps/{slug}/announcements.json` |
 | Show popup dialog | `api/v1/apps/{slug}/popups.json` |
 | Toggle feature flag | `api/v1/apps/{slug}/features.json` |
-| Update release notes | `apps/{slug}/updates/index.html` |
 | Update privacy policy | `apps/{slug}/privacy/index.html` |
 
 ### Deployment

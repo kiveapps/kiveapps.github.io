@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Join the Kive Apps community — share ideas, get help, and connect with others.">
+<title>Community — Kive Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+.page-hero{
+  padding:160px 28px 80px;text-align:center;position:relative;z-index:1;
+  border-bottom:1px solid var(--border);
+}
+.page-hero h1{font-size:clamp(32px,7vw,56px);font-weight:900;letter-spacing:-.04em;margin-bottom:16px}
+.page-hero p{font-size:clamp(16px,2vw,18px);color:var(--t2);max-width:500px;margin:0 auto;line-height:1.7}
+
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.channels{grid-template-columns:1fr}}
+.channel{
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:36px 28px;text-align:center;
+  transition:all .3s var(--ease);
+}
+.channel:hover{border-color:var(--border-h);background:rgba(255,255,255,0.04);transform:translateY(-4px)}
+.channel-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--accent-g);border:1px solid rgba(77,182,172,0.12);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+}
+.channel-icon svg{width:24px;height:24px;color:var(--accent)}
+.channel h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.channel p{font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:20px}
+
+.guidelines{
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:48px 40px;
+}
+@media(max-width:640px){.guidelines{padding:32px 24px}}
+.guidelines h3{font-size:22px;font-weight:700;margin-bottom:24px}
+.guideline{display:flex;gap:16px;margin-bottom:20px}
+.guideline:last-child{margin-bottom:0}
+.guideline-num{
+  width:32px;height:32px;border-radius:10px;flex-shrink:0;
+  background:var(--accent-g);border:1px solid rgba(77,182,172,0.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:var(--accent);
+}
+.guideline-text h4{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.guideline-text p{font-size:14px;color:var(--t2);line-height:1.7}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="bg-glow"></div>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><div class="nav-brand-icon">K</div><span class="nav-brand-text">Kive Apps</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+      <a href="/community/" class="nav-link active">Community</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/contact/" class="nav-cta">Contact</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+  <a href="/community/" class="nav-link active">Community</a>
+  <a href="/blog/" class="nav-link">Blog</a>
+  <a href="/contact/" class="nav-link">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-badge rv">Community</div>
+  <h1 class="rv" style="transition-delay:.1s">Better <span class="grad">Together</span></h1>
+  <p class="rv" style="transition-delay:.2s">Connect with fellow users, share ideas, get help, and shape the future of Kive Apps.</p>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <p class="section-tag rv">Join Us</p>
+    <h2 class="section-title rv" style="margin-bottom:48px">Where We Hang Out</h2>
+    <div class="channels stagger">
+      <div class="channel rv">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Discussions</h3>
+        <p>Ask questions, share tips, and help others in our open community forum.</p>
+        <a href="#" class="btn btn-secondary btn-sm">Coming Soon</a>
+      </div>
+      <div class="channel rv">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h3>Bug Reports</h3>
+        <p>Found a bug? Let us know and help us make our apps better for everyone.</p>
+        <a href="mailto:kive.apps+support@gmail.com?subject=[Bug Report]" class="btn btn-secondary btn-sm">Report a Bug</a>
+      </div>
+      <div class="channel rv">
+        <div class="channel-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Feature Requests</h3>
+        <p>Have an idea for a feature? Share it with us and vote on what gets built next.</p>
+        <a href="mailto:kive.apps+contactus@gmail.com?subject=[Feature Request]" class="btn btn-secondary btn-sm">Request Feature</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="wrap-md">
+    <div class="guidelines rv-scale">
+      <h3>Community Guidelines</h3>
+      <div class="guideline">
+        <div class="guideline-num">1</div>
+        <div class="guideline-text">
+          <h4>Be Respectful</h4>
+          <p>Treat everyone with kindness. We're all here to grow and help each other.</p>
+        </div>
+      </div>
+      <div class="guideline">
+        <div class="guideline-num">2</div>
+        <div class="guideline-text">
+          <h4>Stay On Topic</h4>
+          <p>Keep discussions relevant to Kive Apps, self-improvement, and personal growth.</p>
+        </div>
+      </div>
+      <div class="guideline">
+        <div class="guideline-num">3</div>
+        <div class="guideline-text">
+          <h4>Share Constructively</h4>
+          <p>Feedback is welcome. Make it actionable, specific, and kind. We read everything.</p>
+        </div>
+      </div>
+      <div class="guideline">
+        <div class="guideline-num">4</div>
+        <div class="guideline-text">
+          <h4>Protect Privacy</h4>
+          <p>Never share personal information about yourself or others in public channels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-brand" style="margin-bottom:4px"><div class="nav-brand-icon">K</div><span class="nav-brand-text">Kive Apps</span></a>
+        <p>Building free, private, and powerful tools that help people transform their lives.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Apps</p>
+        <a href="/apps/lifemaster-ai/">LifeMaster AI</a>
+        <a href="/apps/lifemaster-ai/privacy/">Privacy Policy</a>
+        <a href="/apps/lifemaster-ai/support/">Support</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="/blog/">Blog</a>
+        <a href="/community/">Community</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Connect</p>
+        <a href="mailto:kive.apps@gmail.com">kive.apps@gmail.com</a>
+        <a href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" target="_blank" rel="noopener">Google Play</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Kive Apps. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');io.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

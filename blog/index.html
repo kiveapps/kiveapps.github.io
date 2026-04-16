@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Kive Apps Blog — Thoughts on privacy, discipline, app development, and building tools that matter.">
+<title>Blog — Kive Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/shared.css">
+<style>
+.page-hero{
+  padding:160px 28px 80px;text-align:center;position:relative;z-index:1;
+  border-bottom:1px solid var(--border);
+}
+.page-hero h1{font-size:clamp(32px,7vw,56px);font-weight:900;letter-spacing:-.04em;margin-bottom:16px}
+.page-hero p{font-size:clamp(16px,2vw,18px);color:var(--t2);max-width:500px;margin:0 auto;line-height:1.7}
+
+.featured-post{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:var(--r-xl);overflow:hidden;
+  transition:all .3s var(--ease);text-decoration:none;
+}
+.featured-post:hover{border-color:var(--border-h);opacity:1;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+@media(max-width:768px){.featured-post{grid-template-columns:1fr}}
+.featured-img{
+  background:linear-gradient(135deg,rgba(77,182,172,0.1),rgba(245,200,66,0.05));
+  min-height:280px;display:flex;align-items:center;justify-content:center;
+  font-size:48px;
+}
+.featured-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
+.featured-body .blog-tag{margin-bottom:12px}
+.featured-body h3{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--t1);letter-spacing:-.02em;margin-bottom:12px;line-height:1.25}
+.featured-body p{font-size:15px;color:var(--t2);line-height:1.7;margin-bottom:16px}
+.featured-body .blog-date{margin-bottom:0}
+.read-more{font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.read-more svg{width:14px;height:14px;transition:transform .2s}
+.featured-post:hover .read-more svg{transform:translateX(4px)}
+
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.posts-grid{grid-template-columns:1fr}}
+.post-card{
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;
+  transition:all .3s var(--ease);text-decoration:none;display:block;
+}
+.post-card:hover{border-color:var(--border-h);transform:translateY(-4px);opacity:1}
+.post-thumb{
+  height:140px;
+  background:linear-gradient(135deg,rgba(77,182,172,0.06),rgba(255,255,255,0.02));
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:28px;
+}
+.post-body{padding:24px}
+.post-body .blog-tag{margin-bottom:10px}
+.post-body h4{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:8px;line-height:1.4}
+.post-body p{font-size:14px;color:var(--t2);line-height:1.65;margin-bottom:12px}
+
+.blog-tag{
+  display:inline-block;font-size:11px;font-weight:600;
+  color:var(--accent);background:var(--accent-g);
+  padding:4px 10px;border-radius:6px;
+}
+.blog-date{font-size:12px;color:var(--t3)}
+
+.newsletter{
+  background:linear-gradient(135deg,rgba(77,182,172,0.06),rgba(245,200,66,0.03));
+  border:1px solid var(--border);border-radius:var(--r-xl);
+  padding:56px 40px;text-align:center;
+}
+@media(max-width:640px){.newsletter{padding:40px 24px}}
+.newsletter h3{font-size:clamp(22px,4vw,32px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.newsletter p{font-size:16px;color:var(--t2);margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
+.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto}
+@media(max-width:480px){.newsletter-form{flex-direction:column}}
+.newsletter-form input{
+  flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);
+  border-radius:14px;padding:14px 18px;font-size:15px;color:var(--white);
+  font-family:inherit;outline:none;transition:border-color .3s;
+}
+.newsletter-form input:focus{border-color:var(--accent)}
+.newsletter-form input::placeholder{color:var(--t3)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="bg-glow"></div>
+
+<nav class="nav scrolled" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><div class="nav-brand-icon">K</div><span class="nav-brand-text">Kive Apps</span></a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+      <a href="/community/" class="nav-link">Community</a>
+      <a href="/blog/" class="nav-link active">Blog</a>
+      <a href="/contact/" class="nav-cta">Contact</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="/" class="nav-link">Home</a>
+  <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
+  <a href="/community/" class="nav-link">Community</a>
+  <a href="/blog/" class="nav-link active">Blog</a>
+  <a href="/contact/" class="nav-link">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-badge rv">Blog</div>
+  <h1 class="rv" style="transition-delay:.1s">Thoughts &amp; <span class="grad">Stories</span></h1>
+  <p class="rv" style="transition-delay:.2s">On privacy, discipline, app development, and building tools that actually matter.</p>
+</div>
+
+<!-- FEATURED POST -->
+<section class="section">
+  <div class="wrap">
+    <a href="#" class="featured-post rv-scale">
+      <div class="featured-img">&#x1F680;</div>
+      <div class="featured-body">
+        <span class="blog-tag">Announcement</span>
+        <h3>Introducing LifeMaster AI — Your Personal Discipline OS</h3>
+        <p>After months of obsessive building, we're launching our first app. Here's the story behind it — why we built it, what it does, and how it can transform your daily life.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <span class="blog-date">April 1, 2026</span>
+          <span class="read-more">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ALL POSTS -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="wrap">
+    <p class="section-tag rv">All Posts</p>
+    <h2 class="section-title rv" style="margin-bottom:48px">Recent Articles</h2>
+    <div class="posts-grid stagger">
+      <a href="#" class="post-card rv">
+        <div class="post-thumb">&#x1F512;</div>
+        <div class="post-body">
+          <span class="blog-tag">Philosophy</span>
+          <h4>Why Privacy Should Be a Default, Not a Feature</h4>
+          <p>In a world of data-hungry apps, here's why we chose zero tracking from day one.</p>
+          <span class="blog-date">March 25, 2026</span>
+        </div>
+      </a>
+      <a href="#" class="post-card rv">
+        <div class="post-thumb">&#x1F6E0;&#xFE0F;</div>
+        <div class="post-body">
+          <span class="blog-tag">Behind the Scenes</span>
+          <h4>Building Kive Apps — A Solo Developer's Journey</h4>
+          <p>From idea to launch: the story behind building apps that transform lives.</p>
+          <span class="blog-date">March 15, 2026</span>
+        </div>
+      </a>
+      <a href="#" class="post-card rv">
+        <div class="post-thumb">&#x1F3AF;</div>
+        <div class="post-body">
+          <span class="blog-tag">Productivity</span>
+          <h4>The Art of Building Habits That Actually Stick</h4>
+          <p>Science-backed strategies for creating lasting change in your daily routine.</p>
+          <span class="blog-date">March 5, 2026</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="wrap-md">
+    <div class="newsletter rv-scale">
+      <h3>Stay in the Loop</h3>
+      <p>Get notified about new apps, major updates, and articles. No spam, ever.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" aria-label="Email address">
+        <button class="btn btn-primary" onclick="alert('Newsletter coming soon! Follow us on Google Play for now.')">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-brand" style="margin-bottom:4px"><div class="nav-brand-icon">K</div><span class="nav-brand-text">Kive Apps</span></a>
+        <p>Building free, private, and powerful tools that help people transform their lives.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Apps</p>
+        <a href="/apps/lifemaster-ai/">LifeMaster AI</a>
+        <a href="/apps/lifemaster-ai/privacy/">Privacy Policy</a>
+        <a href="/apps/lifemaster-ai/support/">Support</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="/blog/">Blog</a>
+        <a href="/community/">Community</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Connect</p>
+        <a href="mailto:kive.apps@gmail.com">kive.apps@gmail.com</a>
+        <a href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" target="_blank" rel="noopener">Google Play</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Kive Apps. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');io.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

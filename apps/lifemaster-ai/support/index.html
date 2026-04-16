@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0A1A14">
+<meta name="theme-color" content="#050505">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="The AI is free. The human behind it needs chai. Support LifeMaster AI.">
 <meta property="og:title" content="The AI is Free. The Human Needs Chai.">
 <meta property="og:description" content="One person built LifeMaster AI. No team. No investors. Just discipline and chai.">
 <title>Chai for the Dev — LifeMaster AI — Kive Apps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../assets/css/shared.css">
 <style>
 .pts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -18,44 +21,44 @@
 
 .page{position:relative;z-index:1;max-width:450px;margin:0 auto;padding:0 20px 72px}
 
-.hero{text-align:center;padding:52px 0 28px}
+.hero{text-align:center;padding:100px 0 28px}
 .icon-ring{position:relative;display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;margin-bottom:22px}
 .icon-ring::before{content:'';position:absolute;inset:-4px;border-radius:28px;background:conic-gradient(from 180deg,var(--teal),var(--gold),#D4843A,var(--teal));opacity:0;filter:blur(8px);animation:halo 5s ease-in-out infinite;z-index:-1}
 @keyframes halo{0%,100%{opacity:0;transform:rotate(0deg)}50%{opacity:.28;transform:rotate(180deg)}}
 .app-icon{width:100px;height:100px;border-radius:24px;display:block;background:linear-gradient(145deg,#112018,#060E08);animation:flt 7s ease-in-out infinite}
 @keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .app-name{font-size:clamp(24px,6vw,30px);font-weight:700;color:var(--white);letter-spacing:-.5px;margin-bottom:6px}
-.app-tag{font-size:13px;font-weight:500;color:var(--teal);margin-bottom:10px}
+.app-tag{font-size:13px;font-weight:500;color:var(--accent);margin-bottom:10px}
 .app-chips{display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.chip{font-size:11px;color:var(--text3);background:rgba(77,182,172,0.06);border:1px solid rgba(77,182,172,0.1);border-radius:20px;padding:3px 10px}
+.chip{font-size:11px;color:var(--t3);background:rgba(77,182,172,0.06);border:1px solid rgba(77,182,172,0.1);border-radius:20px;padding:3px 10px}
 
 .chai-hero{text-align:center;padding:4px 4px 28px}
 .chai-headline{font-size:clamp(22px,5.5vw,28px);font-weight:700;color:var(--white);line-height:1.3;letter-spacing:-.4px;margin-bottom:12px}
 .chai-headline em{font-style:normal;background:linear-gradient(135deg,#E8A55A,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.chai-sub{font-size:15px;color:var(--text2);line-height:1.8}
-.chai-sub strong{color:var(--text);font-weight:600}
+.chai-sub{font-size:15px;color:var(--t2);line-height:1.8}
+.chai-sub strong{color:var(--t1);font-weight:600}
 
-.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:12px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.card-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--teal);margin-bottom:15px}
+.card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:12px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.card-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--accent);margin-bottom:15px}
 
 .chai-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.chai-fact{background:rgba(10,26,20,.5);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.chai-fact{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
 .fact-num{font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--teal),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-.fact-lbl{font-size:11px;color:var(--text3);line-height:1.4}
+.fact-lbl{font-size:11px;color:var(--t3);line-height:1.4}
 
 .amt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.amt-btn{background:rgba(10,26,20,0.6);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:14px 4px 11px;font-size:17px;font-weight:700;color:var(--teal);cursor:pointer;text-align:center;font-family:inherit;line-height:1;transition:all .2s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.amt-btn{background:rgba(255,255,255,0.03);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:14px 4px 11px;font-size:17px;font-weight:700;color:var(--accent);cursor:pointer;text-align:center;font-family:inherit;line-height:1;transition:all .2s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .amt-sym{display:block;font-size:10px;font-weight:500;opacity:.55;margin-bottom:3px}
-.amt-btn:hover{border-color:var(--teal);background:rgba(77,182,172,0.08)}
+.amt-btn:hover{border-color:var(--accent);background:rgba(77,182,172,0.08)}
 .amt-btn.on{background:linear-gradient(135deg,#4DB6AC,#38A09A);border-color:transparent;color:#081410;box-shadow:0 4px 20px rgba(77,182,172,0.32)}
 .amt-btn:active{transform:scale(.95)}
 .amt-chai{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px;margin-bottom:14px}
-.amt-chai-lbl{font-size:9px;color:var(--text3);text-align:center;line-height:1.3;letter-spacing:.01em}
+.amt-chai-lbl{font-size:9px;color:var(--t3);text-align:center;line-height:1.3;letter-spacing:.01em}
 .custom-row{display:flex;gap:8px}
-.custom-in{flex:1;min-width:0;background:rgba(10,26,20,0.6);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:13px 14px;font-size:15px;color:var(--white);outline:none;font-family:inherit;transition:border-color .2s}
-.custom-in:focus{border-color:var(--teal)}
+.custom-in{flex:1;min-width:0;background:rgba(255,255,255,0.03);border:1.5px solid rgba(77,182,172,0.15);border-radius:13px;padding:13px 14px;font-size:15px;color:var(--white);outline:none;font-family:inherit;transition:border-color .2s}
+.custom-in:focus{border-color:var(--accent)}
 .custom-in::placeholder{color:rgba(77,182,172,0.2)}
-.go-btn{flex-shrink:0;background:rgba(77,182,172,0.1);border:1.5px solid rgba(77,182,172,0.2);border-radius:13px;padding:13px 18px;font-size:13px;font-weight:700;color:var(--teal);cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;touch-action:manipulation}
+.go-btn{flex-shrink:0;background:rgba(77,182,172,0.1);border:1.5px solid rgba(77,182,172,0.2);border-radius:13px;padding:13px 18px;font-size:13px;font-weight:700;color:var(--accent);cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;touch-action:manipulation}
 .go-btn:hover{background:rgba(77,182,172,0.18)}
 .go-btn:active{transform:scale(.97)}
 
@@ -64,49 +67,50 @@
 .pay-now:active{transform:scale(.98);box-shadow:0 2px 14px rgba(77,182,172,.2)}
 .pay-now:hover{box-shadow:0 6px 32px rgba(77,182,172,.38);opacity:1;color:#081410}
 .pay-emoji{font-size:18px}
-.pay-note{font-size:12px;color:var(--text3);text-align:center;line-height:1.55;margin-bottom:16px}
+.pay-note{font-size:12px;color:var(--t3);text-align:center;line-height:1.55;margin-bottom:16px}
 
-.or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--text3);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--t3);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
 .or::before,.or::after{content:'';flex:1;height:1px;background:var(--border)}
 
 .qr-wrap{text-align:center}
-.qr-hint{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.55}
+.qr-hint{font-size:13px;color:var(--t2);margin-bottom:14px;line-height:1.55}
 .qr-card{display:inline-block;background:#fff;border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 2px 40px rgba(212,132,58,0.1),0 0 0 1px rgba(255,255,255,.06)}
 #qrcode canvas,#qrcode img{display:block;border-radius:6px}
 .qr-lbl{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:4px}
-.qr-sub{font-size:11px;color:var(--text3);line-height:1.7}
+.qr-sub{font-size:11px;color:var(--t3);line-height:1.7}
 
-.upi-bar{display:flex;align-items:center;gap:10px;background:rgba(10,26,20,.65);border:1px solid var(--border);border-radius:13px;padding:13px 14px;margin-bottom:8px}
+.upi-bar{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:13px;padding:13px 14px;margin-bottom:8px}
 .upi-id{flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--white);font-family:'SF Mono','Fira Code','Courier New',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.copy-btn{flex-shrink:0;background:rgba(77,182,172,.1);border:1px solid rgba(77,182,172,.22);border-radius:9px;padding:9px 16px;font-size:12px;font-weight:700;color:var(--teal);cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s;touch-action:manipulation}
+.copy-btn{flex-shrink:0;background:rgba(77,182,172,.1);border:1px solid rgba(77,182,172,.22);border-radius:9px;padding:9px 16px;font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s;touch-action:manipulation}
 .copy-btn:hover{background:rgba(77,182,172,.18)}
-.copy-btn.ok{background:var(--teal);color:#081410;border-color:transparent}
-.upi-sub{font-size:11px;color:var(--text3);line-height:1.55;padding:0 2px}
+.copy-btn.ok{background:var(--accent);color:#081410;border-color:transparent}
+.upi-sub{font-size:11px;color:var(--t3);line-height:1.55;padding:0 2px}
 
 .steps-list{display:flex;flex-direction:column;gap:16px}
 .step-row{display:flex;gap:14px;align-items:flex-start}
-.step-n{width:30px;height:30px;border-radius:50%;background:rgba(77,182,172,.08);border:1px solid rgba(77,182,172,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--teal);flex-shrink:0;margin-top:2px}
+.step-n{width:30px;height:30px;border-radius:50%;background:rgba(77,182,172,.08);border:1px solid rgba(77,182,172,.18);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px}
 .step-body{flex:1}
-.step-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
-.step-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.step-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.step-desc{font-size:13px;color:var(--t2);line-height:1.6}
 
 .ty{text-align:center;padding:32px 16px 8px}
 .ty-icon{font-size:38px;display:block;margin-bottom:14px;animation:pulse 3.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .ty-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;letter-spacing:-.2px}
-.ty-text{font-size:14px;color:var(--text3);line-height:1.9}
+.ty-text{font-size:14px;color:var(--t3);line-height:1.9}
 
 @media(max-width:360px){.amt-btn{font-size:15px}.pay-now{font-size:15px}}
-@media(min-width:600px){.page{padding:0 28px 80px}.hero{padding:72px 0 36px}.app-icon{width:112px;height:112px}.icon-ring{width:112px;height:112px}}
+@media(min-width:600px){.page{padding:0 28px 80px}.hero{padding:120px 0 36px}.app-icon{width:112px;height:112px}.icon-ring{width:112px;height:112px}}
 </style>
 </head>
 <body>
 
+<div class="grain"></div>
 <div class="bg-glow"></div>
 <div class="pts" id="pts"></div>
 
 <!-- NAVIGATION -->
-<nav class="nav">
+<nav class="nav scrolled">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <div class="nav-brand-icon">K</div>
@@ -115,9 +119,9 @@
     <div class="nav-links">
       <a href="/" class="nav-link">Home</a>
       <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
-      <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
-      <a href="/apps/lifemaster-ai/support/" class="nav-link active">Support</a>
-      <a href="/docs/" class="nav-link">Docs</a>
+      <a href="/community/" class="nav-link">Community</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/contact/" class="nav-cta">Contact</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -127,9 +131,9 @@
 <div class="nav-mobile" id="mobileMenu">
   <a href="/" class="nav-link">Home</a>
   <a href="/apps/lifemaster-ai/" class="nav-link">LifeMaster AI</a>
-  <a href="/apps/lifemaster-ai/privacy/" class="nav-link">Privacy</a>
-  <a href="/apps/lifemaster-ai/support/" class="nav-link active">Support</a>
-  <a href="/docs/" class="nav-link">Docs</a>
+  <a href="/community/" class="nav-link">Community</a>
+  <a href="/blog/" class="nav-link">Blog</a>
+  <a href="/contact/" class="nav-link">Contact</a>
 </div>
 
 <div class="page">
@@ -242,17 +246,11 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="footer fi">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="/" class="footer-link">Home</a>
-        <a href="/apps/lifemaster-ai/" class="footer-link">LifeMaster AI</a>
-        <a href="../privacy/" class="footer-link">Privacy Policy</a>
-        <a href="../contact/" class="footer-link">Contact</a>
-        <a href="../updates/" class="footer-link">Updates</a>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <span>LifeMaster AI · <a href="/" style="color:var(--accent)">Kive Apps</a> · &copy; 2026</span>
       </div>
-      <p class="footer-copy">LifeMaster AI · <a href="/">Kive Apps</a></p>
-      <p class="footer-copy">&copy; 2026 Kive Apps. All rights reserved.</p>
     </div>
   </footer>
 

@@ -1,0 +1,21 @@
+# Kive Apps — Robots Exclusion
+User-agent: *
+Allow: /
+Allow: /apps/
+Allow: /blog/
+Allow: /community/
+Allow: /contact/
+
+# Block internal API and config endpoints
+Disallow: /api/
+Disallow: /_
+Disallow: /*.json$
+
+# Block old paths
+Disallow: /docs/
+Disallow: /updates/
+Disallow: /privacy/
+Disallow: /support/
+
+# Sitemap
+Sitemap: https://kiveapps.github.io/sitemap.xml
