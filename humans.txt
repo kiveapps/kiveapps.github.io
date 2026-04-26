@@ -1,0 +1,14 @@
+/* TEAM */
+Kive Apps
+  Site: https://kiveapps.github.io
+  Contact: kive.apps@gmail.com
+
+/* SITE */
+  Last update: 2026/04/27
+  Standards: HTML5, CSS3, ES2020
+  Components: Vanilla JS, Inter font
+  Hosting: GitHub Pages
+  Privacy: Offline-first apps. Zero tracking on this site.
+
+/* THANKS */
+  To everyone who sends us a chai. ☕

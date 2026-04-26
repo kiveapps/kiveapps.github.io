@@ -1,0 +1,17 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Secrets — must NEVER appear in this repo
+*.key
+*.pem
+.env
+.env.local
+
+# Local Jekyll build (we don't run Jekyll locally, but just in case)
+_site/
+.jekyll-cache/
+.jekyll-metadata

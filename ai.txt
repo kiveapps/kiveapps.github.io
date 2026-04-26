@@ -1,0 +1,33 @@
+# ═══════════════════════════════════════════════════════════════════
+# AI Training & Scraping Policy — Kive Apps
+# ═══════════════════════════════════════════════════════════════════
+#
+# This file follows the emerging spaWN ai.txt convention used by
+# many publishers to declare AI-related content rights.
+#
+# All content on https://kiveapps.github.io is the proprietary work
+# of Kive Apps. Use by automated systems is restricted as below.
+
+User-Agent: *
+
+# Disallow training of generative AI models on this site.
+Disallow-AI: /
+Disallow-AI-Image: /
+Disallow-AI-Audio: /
+Disallow-AI-Video: /
+
+# Disallow inclusion in retrieval-augmented generation indices
+# without prior written consent.
+Disallow-RAG: /
+
+# Disallow vectorization for any AI-related index.
+Disallow-Embed: /
+
+# Allowed: human visitors and standard search engine indexing of
+# clearly-marked public marketing pages only (see robots.txt).
+
+# Contact for licensing inquiries:
+Contact: kive.apps@gmail.com
+
+# Effective date: 2026-04-01
+# Last updated: 2026-04-27

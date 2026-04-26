@@ -1,0 +1,79 @@
+# Jekyll configuration for kiveapps.github.io
+# This file controls which files GitHub Pages serves publicly.
+
+title: Kive Apps
+description: Cinematic apps for focus, recovery, and growth.
+url: https://kiveapps.github.io
+
+# ─────────────────────────────────────────────────────────────────
+# EXCLUDE — files in this list are NOT served by GitHub Pages.
+# Anything starting with "_" is excluded by default, but we list
+# everything explicitly for clarity and safety.
+# ─────────────────────────────────────────────────────────────────
+exclude:
+  # Internal documentation (developer-only)
+  - _DEVELOPER.md
+  - _ARCHITECTURE.md
+  - _API_REFERENCE.md
+  - _ANDROID_INTEGRATION.md
+  - _BUILD.md
+  - _AI_AGENT_GUIDE.md
+  - _ANDROID_PROMPT.md
+  - README.md
+
+  # Belt-and-suspenders: any future _*.md / _*.txt is also private
+  - "_*.md"
+  - "_*.txt"
+  - "_*.yml"
+  - "_*.yaml"
+  - "_*.json"
+  - "_*.html"
+
+  # Source-control artifacts
+  - .git
+  - .github
+  - .gitignore
+  - .gitattributes
+  - .nojekyll
+
+  # Editor/OS noise
+  - .vscode
+  - .idea
+  - .DS_Store
+  - Thumbs.db
+  - desktop.ini
+
+  # Tooling / scripts (never public)
+  - tools
+  - scripts
+  - internal
+  - node_modules
+  - package.json
+  - package-lock.json
+
+  # Anything that might leak secrets
+  - "*.key"
+  - "*.pem"
+  - "*.crt"
+  - "*.pfx"
+  - "*.env"
+  - .env*
+  - "*.bak"
+  - "*.log"
+  - "*.tmp"
+
+# ─────────────────────────────────────────────────────────────────
+# INCLUDE — folders we WANT served even though they start with
+# special characters. The /d/, /m/, /decoys/ folders are explicit
+# targets for the encrypted API output.
+# ─────────────────────────────────────────────────────────────────
+include:
+  - assets
+
+# ─────────────────────────────────────────────────────────────────
+# Disable Jekyll plugins we don't need (faster builds, smaller
+# attack surface, no auto-generated content).
+# ─────────────────────────────────────────────────────────────────
+plugins: []
+safe: true
+incremental: false

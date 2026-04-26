@@ -6,10 +6,13 @@
 <meta name="theme-color" content="#050505">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="description" content="The AI is free. The human behind it needs chai. Support LifeMaster AI.">
-<meta property="og:title" content="The AI is Free. The Human Needs Chai.">
-<meta property="og:description" content="One person built LifeMaster AI. No team. No investors. Just discipline and chai.">
-<title>Chai for the Dev — LifeMaster AI — Kive Apps</title>
+<meta name="description" content="LifeMaster AI is free forever. If it helped you, fuel the team behind it with a chai.">
+<meta property="og:title" content="Buy Us a Chai — LifeMaster AI">
+<meta property="og:description" content="LifeMaster AI is free, offline, and ad-free. Your support keeps it that way.">
+<meta name="robots" content="index,follow,noai,noimageai">
+<link rel="canonical" href="https://kiveapps.github.io/apps/lifemaster-ai/support/">
+<link rel="icon" type="image/png" href="../icon.png">
+<title>Buy Us a Chai — LifeMaster AI — Kive Apps</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -154,27 +157,27 @@
 
   <!-- CHAI HEADLINE -->
   <div class="chai-hero fi">
-    <h2 class="chai-headline">The AI is Free.<br>The Human Behind It<br><em>Needs Chai.</em></h2>
-    <p class="chai-sub">One person built everything you see in this app.<br><strong>No team. No investors. No salary.</strong><br>Just discipline, sleepless nights, and an unreasonable belief that everyone deserves tools to transform their life — for free.</p>
+    <h2 class="chai-headline">The App Is Free.<br>The Team Behind It<br><em>Runs On Chai.</em></h2>
+    <p class="chai-sub">LifeMaster AI is free, offline, and ad-free — forever.<br><strong>No subscriptions. No tracking. No fine print.</strong><br>Your support keeps Kive Apps independent and lets us keep shipping tools that actually help people.</p>
   </div>
 
   <!-- CHAI FACTS -->
   <div class="chai-facts fi">
     <div class="chai-fact">
-      <p class="fact-num">1</p>
-      <p class="fact-lbl">developer who built this entire app</p>
+      <p class="fact-num">100%</p>
+      <p class="fact-lbl">of the app is free, forever</p>
     </div>
     <div class="chai-fact">
-      <p class="fact-num">₹0</p>
-      <p class="fact-lbl">earned from LifeMaster AI so far</p>
+      <p class="fact-num">0</p>
+      <p class="fact-lbl">ads, trackers, or data sales — ever</p>
     </div>
     <div class="chai-fact">
       <p class="fact-num">∞</p>
-      <p class="fact-lbl">cups of chai consumed during development</p>
+      <p class="fact-lbl">cups of chai fueling the build</p>
     </div>
     <div class="chai-fact">
-      <p class="fact-num">Free</p>
-      <p class="fact-lbl">forever — that was always the plan</p>
+      <p class="fact-num">100%</p>
+      <p class="fact-lbl">independent — no investors, no agenda</p>
     </div>
   </div>
 
@@ -226,7 +229,7 @@
     <div class="or">or enter manually</div>
 
     <div class="upi-bar">
-      <span class="upi-id">shubhammalviya786@ybl</span>
+      <span class="upi-id" id="upiText">shubhammalviya786@ybl</span>
       <button class="copy-btn" id="cpBtn" onclick="copyID()">Copy</button>
     </div>
     <p class="upi-sub">Open any UPI app → Send / Pay → Enter this ID → Enter amount → Done</p>
@@ -241,8 +244,8 @@
   <!-- THANK YOU -->
   <div class="ty fi">
     <span class="ty-icon">🙏</span>
-    <p class="ty-title">You just made a dev's day.</p>
-    <p class="ty-text">Seriously. This means everything.<br>Every chai you send goes straight into<br>new features, better coaching, and making sure<br>LifeMaster AI stays free for everyone — always.</p>
+    <p class="ty-title">You just made our day.</p>
+    <p class="ty-text">Seriously — this means everything.<br>Every chai you send goes straight into<br>new features, better coaching, and keeping<br>LifeMaster AI free for everyone, always.</p>
   </div>
 
   <!-- FOOTER -->
@@ -256,9 +259,10 @@
 
 </div>
 
+<script src="/assets/js/shared.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-const UPI='shubhammalviya786@ybl',NAME='Shubham Malviya',NOTE='Chai for the Dev - LifeMaster AI';
+const UPI='shubhammalviya786@ybl',NAME='Kive Apps',NOTE='Chai for Kive Apps - LifeMaster AI';
 let amt=51,qr=null;
 
 const uri=a=>`upi://pay?pa=${UPI}&pn=${encodeURIComponent(NAME)}&am=${a}&cu=INR&tn=${encodeURIComponent(NOTE)}`;
@@ -283,11 +287,36 @@ function custom(){
   document.querySelectorAll('.amt-btn').forEach(x=>x.classList.remove('on'));
   update(v);
 }
-function goUPI(){window.location.href=uri(amt);return false}
+function goUPI(){
+  window.location.href=uri(amt);
+  // When user returns from UPI app, show thank-you (best-effort)
+  setTimeout(()=>{
+    if(document.visibilityState==='visible'){
+      KK.showSuccessModal({
+        title:'Did the payment go through?',
+        message:"If yes — thank you so much! ☕ You\u2019re directly fueling LifeMaster AI's next features.",
+        ctaText:'You\u2019re welcome',
+        confetti:true
+      });
+    } else {
+      document.addEventListener('visibilitychange',function once(){
+        if(document.visibilityState==='visible'){
+          KK.showSuccessModal({
+            title:'Welcome back ☕',
+            message:'If your chai went through, thank you — truly. Every rupee keeps Kive Apps independent and ad-free.',
+            ctaText:'Close',
+            confetti:true
+          });
+          document.removeEventListener('visibilitychange',once);
+        }
+      });
+    }
+  }, 800);
+  return false;
+}
 function copyID(){
   const b=document.getElementById('cpBtn');
-  const done=()=>{b.textContent='Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok')},2500)};
-  try{navigator.clipboard.writeText(UPI).then(done).catch(done)}catch(e){done()}
+  KK.copyToClipboard(UPI,b,{successLabel:'Copied!'});
 }
 
 const S={
@@ -343,20 +372,13 @@ function mkPts(){
   }
 }
 
-function fadeIn(){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}});
-  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-}
-
 window.addEventListener('load',()=>{
   qr=new QRCode(document.getElementById('qrcode'),{
     text:uri(51),width:200,height:200,
     colorDark:'#0A1A14',colorLight:'#FFFFFF',
     correctLevel:QRCode.CorrectLevel.M
   });
-  buildSteps();mkPts();fadeIn();
+  buildSteps();mkPts();
   document.getElementById('cIn').addEventListener('keypress',e=>{if(e.key==='Enter')custom()});
 });
 </script>

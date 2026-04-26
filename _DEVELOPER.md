@@ -1,484 +1,150 @@
 # Kive Apps — Developer Documentation
 
-> **Private documentation for managing the Kive Apps GitHub Pages project.**  
-> This file is NOT linked anywhere on the website — it's your personal reference.
+> **Private.** Excluded from GitHub Pages output via `_config.yml`.
+> This is your master index. Start here.
 
 ---
 
-## Table of Contents
+## What is this project?
 
-1. [Project Overview](#project-overview)
-2. [URL Structure](#url-structure)
-3. [Adding a New App](#adding-a-new-app)
-4. [API Endpoints](#api-endpoints)
-5. [Remote Actions](#remote-actions)
-   - [Force Update](#force-update)
-   - [Soft Update](#soft-update)
-   - [Maintenance Mode](#maintenance-mode)
-   - [Kill Switch](#kill-switch)
-   - [Announcements](#announcements)
-   - [Popups](#popups)
-   - [Notifications](#notifications)
-   - [Feature Flags](#feature-flags)
-6. [Email Routing](#email-routing)
-7. [Android Integration](#android-integration)
-8. [Quick Reference](#quick-reference)
+Kive Apps is a brand that builds free, private, offline-first Android apps. The infrastructure has two parts:
+
+1. **Public marketing site** (`kiveapps.github.io`) — cinematic showroom for the brand and individual apps.
+2. **Encrypted silent-features API** — a static, GitHub-hosted backend that lets us push remote announcements, popups, banners, blockers, premium grants, feature flags, kill switches, and more — without releasing a new APK. Every request and response is AES-256-GCM encrypted with version-specific keys, and paths are HMAC-derived to look like opaque CDN assets.
+
+Two repositories support this:
+
+| Repo | Visibility | Purpose |
+|------|------------|---------|
+| `kiveapps/kiveapps-source` | **PRIVATE** | Plaintext source data + build engine + GitHub Actions workflow |
+| `kiveapps/kiveapps.github.io` | **PUBLIC** | Marketing site + encrypted CI artifacts + private docs (Jekyll-excluded) |
+
+The master secret never leaves the private repo's GitHub Secrets. The public repo never sees plaintext.
 
 ---
 
-## Project Overview
+## Document Index
 
-This GitHub Pages site serves as:
-- **Brand showroom** — Cinematic home page, app showcases, blog, community, contact
-- **App pages** — Dedicated product, privacy, and support pages per app
-- **Internal API center** — Hidden remote config endpoints consumed by Android apps
-- **Control panel** — Edit JSON files to control app behavior without releasing updates
+Read these in order if you're new. Skip to the relevant one if you're not.
 
-**Security:** API endpoints are blocked from crawlers via `robots.txt`. No public API docs are exposed.
-
-**Live URL:** `https://kiveapps.github.io`
+| Document | What's in it |
+|----------|--------------|
+| **[_AI_AGENT_GUIDE.md](_AI_AGENT_GUIDE.md)** | Operating instructions for AI assistants on this codebase |
+| **[_ARCHITECTURE.md](_ARCHITECTURE.md)** | Threat model, cryptography, key hierarchy, file format, manifest protocol |
+| **[_API_REFERENCE.md](_API_REFERENCE.md)** | Schemas for all 11 endpoints (config, announcements, popups, blockers, premium, etc.) |
+| **[_ANDROID_INTEGRATION.md](_ANDROID_INTEGRATION.md)** | Kotlin code: file decoder, envelope parser, manifest fetcher, refresh scheduler |
+| **[_BUILD.md](_BUILD.md)** | Daily ops: pushing changes, adding apps/versions, incident response |
+| **`kiveapps-source/SETUP.md`** | One-time setup of secrets, PAT, GitHub Actions |
+| **[README.md](README.md)** | Public repo overview (also private; not served by Pages) |
 
 ---
 
-## URL Structure
+## Current Apps
+
+| App | Slug | Package ID | Latest version | Status |
+|-----|------|------------|----------------|--------|
+| LifeMaster AI | `lifemaster-ai` | `com.kive.lifemaster` | 1.0.0 (code 1) | Active |
+
+To add a new app: see `_BUILD.md` §3.
+
+---
+
+## Endpoint Catalog (per app, per version)
+
+11 endpoints + 1 manifest. All encrypted, all per-version-keyed.
+
+| Endpoint | Drives | Critical? |
+|----------|--------|-----------|
+| `config` | App version, maintenance mode, refresh intervals, links | ✅ |
+| `announcements` | Banners, cards, fullscreens (timed/permanent, skippable/non-skippable) | |
+| `notifications` | Scheduled in-app notifications | |
+| `popups` | Dialogs, ratings, surveys, changelogs | |
+| `blockers` | App-level / screen-level / feature-level / regional / time-based blocks | ✅ |
+| `features` | Feature flags + rollout percentages + custom config | |
+| `premium` | Subscription tiers, per-user grants, trials | |
+| `segments` | User segmentation rules | |
+| `experiments` | A/B test definitions and variant assignments | |
+| `content` | Daily quotes, coaching tips, challenges (refreshable without app update) | |
+| `emergency` | Kill switch, force logout, global lock, data purge | ✅ |
+| `_manifest` | (auto-generated) encrypted index of current paths | ✅ |
+
+Critical endpoints refresh every 15 minutes by default. Others every 3 hours.
+
+---
+
+## Site Structure (public marketing pages)
 
 ```
 /                              → Home (cinematic brand showroom)
-/apps/{slug}/                  → App product page
-/apps/{slug}/privacy/          → App privacy policy
-/apps/{slug}/support/          → App support/donation
-/blog/                         → Brand blog
+/apps/lifemaster-ai/           → Product page
+/apps/lifemaster-ai/privacy/   → Privacy policy
+/apps/lifemaster-ai/support/   → Buy us a chai
+/blog/                         → Blog index
 /community/                    → Community hub
 /contact/                      → Contact form
-/api/v1/apps/{slug}/           → Internal JSON APIs (hidden)
+/404.html                      → Custom 404
+/robots.txt                    → Crawler rules + AI bot blocks
+/ai.txt                        → AI training opt-out
+/sitemap.xml                   → Public-only entries
 ```
 
-**Removed pages:** `/docs/`, `/apps/{slug}/updates/`, `/apps/{slug}/contact/` — consolidated into brand-level pages.
+All public pages must include:
 
-### Current Apps
+```html
+<meta name="robots" content="index,follow,noai,noimageai">
+<meta name="googlebot" content="index,follow,noai,noimageai">
+```
 
-| App Name | Slug | Package ID |
-|----------|------|------------|
-| LifeMaster AI | `lifemaster-ai` | `com.kive.lifemaster` |
+All public pages must use the brand name **Kive Apps** — no individual developer attribution.
 
 ---
 
-## Adding a New App
+## Email Routing (abstracted from users)
 
-### Step 1: Create App Pages
+Users always see `kive.apps@gmail.com`. Internally, Gmail's `+` aliasing routes to:
 
-Create the following folder structure:
-```
-apps/{new-slug}/
-├── index.html          # App product page
-├── icon.png            # App icon (512x512 recommended)
-├── privacy/index.html  # Privacy policy
-└── support/index.html  # Support/donation page
-```
-
-**Tip:** Copy from `apps/lifemaster-ai/` and do find-replace:
-- Replace `LifeMaster AI` with your app name
-- Replace `lifemaster-ai` with your app slug
-- Replace `com.kive.lifemaster` with your package ID
-- Update icon.png
-- Update privacy policy content
-- Update support page UPI details (if different)
-
-### Step 2: Create API Endpoints
-
-Create the following folder structure:
-```
-api/v1/apps/{new-slug}/
-├── config.json         # App config & version control
-├── announcements.json  # In-app announcements
-├── notifications.json  # Push notification triggers
-├── popups.json         # Remote dialogs/popups
-└── features.json       # Feature flags
-```
-
-**Tip:** Copy from `api/v1/apps/lifemaster-ai/` and update:
-- `app.id` → your package ID
-- `app.name` → your app name
-- `app.slug` → your app slug
-- `links.*` → update all URLs to use new slug
-- `api_endpoints.base_url` → update to new slug
-
-### Step 3: Update Home Page
-
-Edit `index.html` and add your app to the showcase section (follow the existing LifeMaster AI card pattern).
-
-### Step 4: Update Navigation
-
-Add the app to the nav in all pages (`index.html`, `blog/`, `community/`, `contact/`, and the new app pages).
-
-### Step 5: Configure Android App
-
-In your Android app, set the API base URL:
-```kotlin
-const val API_BASE = "https://kiveapps.github.io/api/v1/apps/{new-slug}/"
-```
-
----
-
-## API Endpoints
-
-### Base URL
-```
-https://kiveapps.github.io/api/v1/apps/{app-slug}/
-```
-
-### Endpoints
-
-| File | Purpose |
-|------|---------|
-| `config.json` | App version, update requirements, maintenance, links |
-| `announcements.json` | In-app banners and announcements |
-| `notifications.json` | Remote notification triggers (pull-based) |
-| `popups.json` | Remote dialogs, bottom sheets, overlays |
-| `features.json` | Feature flags, kill switch, custom config |
-
----
-
-## Remote Actions
-
-### Force Update
-
-**When:** Critical bug fix, security patch, breaking change
-
-**Edit:** `api/v1/apps/{slug}/config.json`
-
-```json
-{
-  "version": {
-    "latest": "2.0.0",
-    "latest_code": 10,
-    "min_supported": "2.0.0",
-    "min_supported_code": 10
-  },
-  "update": {
-    "mandatory": true,
-    "title": "Update Required",
-    "message": "This update includes critical fixes. Please update to continue.",
-    "cta_label": "Update Now"
-  }
-}
-```
-
-**Result:** All users on versions < 10 see a non-dismissible update dialog.
-
----
-
-### Soft Update
-
-**When:** New features, improvements, non-critical fixes
-
-**Edit:** `api/v1/apps/{slug}/config.json`
-
-```json
-{
-  "version": {
-    "latest": "1.5.0",
-    "latest_code": 8,
-    "min_supported": "1.0.0",
-    "min_supported_code": 1
-  },
-  "update": {
-    "mandatory": false,
-    "recommended": true,
-    "title": "Update Available",
-    "message": "A new version is available with improvements!",
-    "dismiss_for_days": 3
-  }
-}
-```
-
-**Result:** Users see a dismissible update prompt. Shows again after 3 days if dismissed.
-
----
-
-### Maintenance Mode
-
-**When:** Server issues, planned downtime, emergency
-
-**Edit:** `api/v1/apps/{slug}/config.json`
-
-```json
-{
-  "maintenance": {
-    "enabled": true,
-    "title": "Under Maintenance",
-    "message": "We're improving things. Back shortly!",
-    "estimated_end": "2026-04-15T18:00:00+05:30",
-    "allow_offline_use": true
-  }
-}
-```
-
-**Result:** Users see maintenance screen. If `allow_offline_use` is true, they can still use offline features.
-
----
-
-### Kill Switch
-
-**When:** Critical security issue, legal requirement, emergency shutdown
-
-**Edit:** `api/v1/apps/{slug}/features.json`
-
-```json
-{
-  "features": {
-    "kill_switch": true
-  }
-}
-```
-
-**Result:** App is completely disabled for all users.
-
----
-
-### Announcements
-
-**When:** Welcome new users, announce features, time-limited events
-
-**Edit:** `api/v1/apps/{slug}/announcements.json`
-
-```json
-{
-  "announcements": [
-    {
-      "id": "diwali-2026",
-      "type": "event",
-      "title": "Happy Diwali! 🪔",
-      "message": "Wishing you light and joy this Diwali.",
-      "display": {
-        "style": "banner",
-        "position": "top",
-        "dismissible": true,
-        "show_once": false,
-        "max_impressions": 3
-      },
-      "schedule": {
-        "start_date": "2026-10-19T00:00:00+05:30",
-        "end_date": "2026-10-22T23:59:59+05:30"
-      },
-      "active": true
-    }
-  ]
-}
-```
-
-**Announcement Types:** `info`, `warning`, `success`, `promo`, `update`, `event`
-
-**Display Styles:** `banner`, `card`, `fullscreen`, `snackbar`, `inline`
-
----
-
-### Popups
-
-**When:** Important messages, surveys, rate prompts, changelogs
-
-**Edit:** `api/v1/apps/{slug}/popups.json`
-
-#### Rate the App
-```json
-{
-  "id": "rate-app-v1",
-  "type": "rating",
-  "title": "Enjoying the app?",
-  "message": "A quick rating helps others discover it.",
-  "primary_button": { "label": "Rate Now", "action": "open_play_store" },
-  "secondary_button": { "label": "Maybe Later", "action": "dismiss" },
-  "display": { "show_once": false, "frequency_hours": 720 },
-  "targeting": { "days_since_install_min": 7, "sessions_min": 5 },
-  "active": true
-}
-```
-
-#### What's New (Changelog)
-```json
-{
-  "id": "whats-new-v2",
-  "type": "changelog",
-  "title": "What's New in v2.0",
-  "message": "• New dashboard\n• Dark mode\n• Bug fixes",
-  "primary_button": { "label": "Got it", "action": "dismiss" },
-  "display": { "show_once": true, "show_on_app_open": true },
-  "targeting": { "version_code_min": 10, "version_code_max": 10 },
-  "active": true
-}
-```
-
-**Popup Types:** `dialog`, `bottom_sheet`, `fullscreen`, `rating`, `survey`, `changelog`, `force_update`
-
----
-
-### Notifications
-
-**When:** Remind users, announce updates (pull-based, not real-time)
-
-**Edit:** `api/v1/apps/{slug}/notifications.json`
-
-```json
-{
-  "notifications": [
-    {
-      "id": "update-reminder",
-      "title": "New Version Available!",
-      "body": "Update now for the latest features.",
-      "channel": "updates",
-      "action": { "type": "open_play_store" },
-      "schedule": { "preferred_time": "10:00" },
-      "active": true
-    }
-  ]
-}
-```
-
-**Note:** This is pull-based. Notifications appear when the app runs, not in real-time.
-
----
-
-### Feature Flags
-
-**When:** Toggle features, A/B testing, gradual rollouts
-
-**Edit:** `api/v1/apps/{slug}/features.json`
-
-```json
-{
-  "features": {
-    "show_support_banner": true,
-    "show_rating_prompt": false,
-    "show_onboarding": true,
-    "maintenance_mode": false,
-    "kill_switch": false
-  },
-  "custom_flags": {
-    "enable_new_dashboard": true,
-    "max_daily_goals": 10,
-    "beta_features": false
-  }
-}
-```
-
----
-
-## Email Routing
-
-Users see `kive.apps@gmail.com` but emails are routed via Gmail's `+` aliasing:
-
-| Purpose | User Sees | Actual Recipient |
-|---------|-----------|------------------|
+| Purpose | Public-facing | Real recipient |
+|---------|---------------|----------------|
 | Support | kive.apps@gmail.com | kive.apps+support@gmail.com |
-| Contact | kive.apps@gmail.com | kive.apps+contactus@gmail.com |
+| Contact form | kive.apps@gmail.com | kive.apps+contactus@gmail.com |
 
-### Gmail Filters
-
-Set up filters to auto-label incoming emails:
-
-**Filter 1: Support**
-- Matches: `to:kive.apps+support@gmail.com`
-- Action: Apply label `Kive/Support`
-
-**Filter 2: Contact Us**
-- Matches: `to:kive.apps+contactus@gmail.com`
-- Action: Apply label `Kive/ContactUs`
+Gmail filters auto-label these into `Kive/Support` and `Kive/ContactUs`.
 
 ---
 
-## Android Integration
+## Privacy Verification (run after every public-repo deploy)
 
-### 1. Define API URLs
+```bash
+# These MUST return 404
+curl -I https://kiveapps.github.io/_DEVELOPER.md
+curl -I https://kiveapps.github.io/_ARCHITECTURE.md
+curl -I https://kiveapps.github.io/_API_REFERENCE.md
+curl -I https://kiveapps.github.io/_ANDROID_INTEGRATION.md
+curl -I https://kiveapps.github.io/_BUILD.md
+curl -I https://kiveapps.github.io/_AI_AGENT_GUIDE.md
+curl -I https://kiveapps.github.io/_config.yml
+curl -I https://kiveapps.github.io/README.md
 
-```kotlin
-object KiveApi {
-    private const val BASE = "https://kiveapps.github.io/api/v1/apps/"
-    
-    fun config(slug: String) = "$BASE$slug/config.json"
-    fun announcements(slug: String) = "$BASE$slug/announcements.json"
-    fun notifications(slug: String) = "$BASE$slug/notifications.json"
-    fun popups(slug: String) = "$BASE$slug/popups.json"
-    fun features(slug: String) = "$BASE$slug/features.json"
-}
+# These MUST return 200
+curl -I https://kiveapps.github.io/
+curl -I https://kiveapps.github.io/robots.txt
+curl -I https://kiveapps.github.io/ai.txt
+curl -I https://kiveapps.github.io/sitemap.xml
 ```
 
-### 2. Fetch on App Startup
-
-```kotlin
-suspend fun fetchRemoteConfig() {
-    try {
-        val config = httpClient.get(KiveApi.config("lifemaster-ai"))
-        val features = httpClient.get(KiveApi.features("lifemaster-ai"))
-        // ... cache locally
-    } catch (e: Exception) {
-        // Use cached values — app works offline
-    }
-}
-```
-
-### 3. Processing Priority
-
-```
-1. Kill switch       → features.kill_switch
-2. Maintenance       → config.maintenance.enabled
-3. Mandatory update  → config.version.min_supported_code
-4. Recommended update→ config.update.recommended
-5. Popups            → popups (filtered by targeting)
-6. Announcements     → announcements (filtered by targeting)
-7. Notifications     → notifications (schedule locally)
-```
-
-### 4. Caching Strategy
-
-- Cache all responses locally
-- Use `features.remote_config.cache_duration_minutes` for refresh interval
-- Always fall back to cached data if network fails
-- Hardcode default values as ultimate fallback
+If any private file returns 200, see `_BUILD.md` §7.
 
 ---
 
-## Quick Reference
+## Hard Rules
 
-### File Locations
-
-```
-/                           → index.html (home page)
-/apps/{slug}/               → apps/{slug}/index.html
-/apps/{slug}/privacy/       → apps/{slug}/privacy/index.html
-/apps/{slug}/support/       → apps/{slug}/support/index.html
-/blog/                      → blog/index.html
-/community/                 → community/index.html
-/contact/                   → contact/index.html
-/api/v1/apps/{slug}/*.json  → api/v1/apps/{slug}/*.json
-```
-
-### Common Tasks
-
-| Task | File to Edit |
-|------|--------------|
-| Force update all users | `api/v1/apps/{slug}/config.json` |
-| Show maintenance screen | `api/v1/apps/{slug}/config.json` |
-| Emergency kill switch | `api/v1/apps/{slug}/features.json` |
-| Add announcement banner | `api/v1/apps/{slug}/announcements.json` |
-| Show popup dialog | `api/v1/apps/{slug}/popups.json` |
-| Toggle feature flag | `api/v1/apps/{slug}/features.json` |
-| Update privacy policy | `apps/{slug}/privacy/index.html` |
-
-### Deployment
-
-1. Edit files locally
-2. Commit and push to GitHub
-3. Changes are live within 1-2 minutes (GitHub Pages CDN)
+1. Never expose the master secret in any commit, screenshot, or chat log.
+2. Never make `kiveapps-source` public.
+3. Never publish files starting with `_` from this repo to GitHub Pages output.
+4. Never add a plaintext API URL — everything goes through encrypted endpoints.
+5. Never reference an individual developer's name in public content.
+6. Never weaken or shortcut the cryptographic protocol.
 
 ---
 
-## Notes
-
-- **GitHub Pages CDN:** Files are cached for ~10 minutes. For urgent changes, users will see updates within 10 minutes of pushing.
-- **JSON Validation:** Always validate JSON before pushing. Invalid JSON will break the app's remote config.
-- **Backward Compatibility:** When adding new fields to JSON, ensure the Android app handles missing fields gracefully.
-- **Testing:** Test changes locally using `python -m http.server 8080` before pushing.
-
----
-
-*Last updated: April 2026*
+*Document version: 2.0 (post-encryption rewrite) · Last updated: 2026-04-27*

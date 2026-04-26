@@ -5,10 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#050505">
 <meta name="description" content="Kive Apps — We build free, private, and powerful Android apps that help people transform their lives.">
+<meta name="robots" content="index,follow,noai,noimageai,max-image-preview:standard">
+<meta name="googlebot" content="index,follow,noai,noimageai">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kive Apps">
 <meta property="og:title" content="Kive Apps — Tools That Transform Lives">
 <meta property="og:description" content="Free, private, powerful Android apps. No ads. No tracking. Just tools that work.">
 <meta property="og:image" content="https://kiveapps.github.io/icon.png">
+<meta property="og:url" content="https://kiveapps.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kive Apps — Tools That Transform Lives">
+<meta name="twitter:description" content="Free, private, powerful Android apps. No ads. No tracking. Just tools that work.">
+<meta name="twitter:image" content="https://kiveapps.github.io/icon.png">
+<link rel="canonical" href="https://kiveapps.github.io/">
+<link rel="icon" type="image/png" href="icon.png">
 <title>Kive Apps — Tools That Transform Lives</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kive Apps",
+  "url": "https://kiveapps.github.io",
+  "logo": "https://kiveapps.github.io/icon.png",
+  "email": "kive.apps@gmail.com",
+  "description": "We build free, private, and powerful Android apps that help people transform their lives.",
+  "sameAs": ["https://play.google.com/store/apps/dev?id=YOUR_DEV_ID"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -525,28 +548,8 @@
 <!-- ═══════════════════════════════════════════════════
      SCRIPTS
      ═══════════════════════════════════════════════════ -->
+<script src="/assets/js/shared.js"></script>
 <script>
-/* Scroll-triggered reveals */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.fi').forEach(el => io.observe(el));
-
-/* Nav scroll effect */
-const nav = document.getElementById('nav');
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
 /* Typing effect */
 const words = ['Transform Lives', 'Empower Growth', 'Build Discipline', 'Inspire Change'];
 let wi = 0, ci = 0, deleting = false;

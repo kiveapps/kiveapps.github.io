@@ -1,71 +1,73 @@
-# Kive Apps — kiveapps.github.io
+# kiveapps.github.io
 
-Cinematic brand showroom and remote control platform for Kive Apps Android applications. Powered by GitHub Pages.
+> **Private repo overview.** This file is excluded from GitHub Pages output.
 
-**Live:** [https://kiveapps.github.io](https://kiveapps.github.io)
+The public marketing site for Kive Apps + the encrypted-API artifact target.
 
-## What This Does
-
-- **Brand Showroom** — Cinematic home page, app showcases, blog, community, contact
-- **App Pages** — Dedicated landing, privacy, and support pages per app
-- **Internal APIs** — Hidden remote config endpoints consumed by Android apps (not publicly documented)
-
-## Apps
-
-| App | Slug | Status |
-|-----|------|--------|
-| LifeMaster AI | `lifemaster-ai` | Live |
-
-## Public Pages
-
-```
-/                              → Home — brand showroom
-/apps/lifemaster-ai/           → LifeMaster AI product page
-/apps/lifemaster-ai/privacy/   → Privacy policy
-/apps/lifemaster-ai/support/   → Support / donations
-/blog/                         → Blog
-/community/                    → Community
-/contact/                      → Contact
-```
-
-## Project Structure
-
-```
-├── index.html                     # Home page (brand showroom)
-├── 404.html                       # Custom 404 page
-├── robots.txt                     # Crawler rules (blocks /api/)
-├── sitemap.xml                    # Public page sitemap
-├── icon.png                       # Brand icon
-├── _DEVELOPER.md                  # Private dev docs (excluded from GH Pages)
-├── assets/css/shared.css          # Cinematic design system v2
-│
-├── apps/lifemaster-ai/            # LifeMaster AI pages
-│   ├── index.html                 # Product page
-│   ├── icon.png                   # App icon
-│   ├── privacy/index.html         # Privacy policy
-│   └── support/index.html         # Support/donation
-│
-├── blog/index.html                # Blog
-├── community/index.html           # Community
-├── contact/index.html             # Contact
-│
-└── api/v1/apps/lifemaster-ai/     # Internal APIs (hidden)
-    ├── config.json
-    ├── announcements.json
-    ├── notifications.json
-    ├── popups.json
-    └── features.json
-```
-
-## Adding a New App
-
-1. Create `apps/{new-slug}/` with HTML pages (copy from lifemaster-ai)
-2. Create `api/v1/apps/{new-slug}/` with JSON config files
-3. Update home page showcase section
-4. Point Android app to the API base URL
-
-**Full instructions:** See [_DEVELOPER.md](_DEVELOPER.md)
+**Live:** https://kiveapps.github.io
 
 ---
 
- 2026 Kive Apps
+## What this repo holds
+
+```
+Public marketing pages (served by GitHub Pages):
+  index.html                     → Home (cinematic brand showroom)
+  apps/lifemaster-ai/            → LifeMaster AI product, privacy, support
+  blog/                          → Blog
+  community/                     → Community
+  contact/                       → Contact
+  404.html                       → Custom 404
+  robots.txt                     → Crawler rules
+  ai.txt                         → AI training opt-out
+  sitemap.xml                    → Public sitemap
+  assets/css/shared.css          → Cinematic design system
+  assets/js/shared.js            → Shared JS (modal, confetti, reveals)
+
+Encrypted API artifacts (CI-generated, do not edit by hand):
+  d/<hash>/<hash>.bin            → Encrypted endpoints
+  m/<hash>.bin                   → Encrypted manifests
+  decoys/<hash>.bin              → Decoy files
+
+Configuration:
+  _config.yml                    → Jekyll: lists private files to exclude
+
+Private docs (Jekyll-excluded, dev-only):
+  _DEVELOPER.md                  → Master index
+  _ARCHITECTURE.md               → Security architecture & threat model
+  _API_REFERENCE.md              → All 11 endpoint schemas
+  _ANDROID_INTEGRATION.md        → Kotlin SDK reference
+  _BUILD.md                      → Daily ops + incident response
+  _AI_AGENT_GUIDE.md             → Operating instructions for AI assistants
+  README.md                      → This file
+```
+
+---
+
+## How content gets here
+
+- **Marketing HTML** is committed by hand (or by Cascade/Windsurf when asked).
+- **Encrypted artifacts** under `/d/`, `/m/`, `/decoys/` are pushed automatically by the GitHub Actions workflow in the **private** companion repo (`kiveapps/kiveapps-source`).
+- **Private docs** live here for proximity to the codebase but are excluded from Pages output via `_config.yml`.
+
+---
+
+## Don't push these here
+
+- ❌ Plaintext source JSON for any endpoint (those live only in `kiveapps-source`)
+- ❌ The master encryption secret
+- ❌ Any developer's personal name in marketing copy
+- ❌ Any working URL pointing to a `_*.md` file
+
+---
+
+## Where to start as a dev
+
+1. Read `_DEVELOPER.md` (master index)
+2. Read `_AI_AGENT_GUIDE.md` if you're (or your AI is) implementing
+3. Read `_ARCHITECTURE.md` to understand the why
+4. Read `_API_REFERENCE.md` when adding/editing endpoint data
+
+---
+
+© 2026 Kive Apps

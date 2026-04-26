@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#050505">
 <meta name="description" content="Contact Kive Apps — Questions, feedback, partnerships, or just say hello.">
+<meta name="robots" content="index,follow,noai,noimageai">
+<meta name="googlebot" content="index,follow,noai,noimageai">
+<link rel="canonical" href="https://kiveapps.github.io/contact/">
+<link rel="icon" type="image/png" href="../icon.png">
 <title>Contact — Kive Apps</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,6 +209,7 @@
   </div>
 </footer>
 
+<script src="/assets/js/shared.js"></script>
 <script>
 const EMAIL_MAP = {
   support: 'kive.apps+support@gmail.com',
@@ -222,16 +227,26 @@ function handleSubmit(e) {
 
   const target = EMAIL_MAP[cat] || EMAIL_MAP.contactus;
   const fullSubject = `[Kive Apps] ${subject}`;
-  let body = `Hi Kive Apps Team,\n\n${message}\n\n---\nName: ${name}\nEmail: ${email}\nCategory: ${document.getElementById('category').options[document.getElementById('category').selectedIndex].text}\n---`;
+  const body = `Hi Kive Apps Team,\n\n${message}\n\n---\nName: ${name}\nEmail: ${email}\nCategory: ${document.getElementById('category').options[document.getElementById('category').selectedIndex].text}\n---`;
 
+  // Open mail client
   window.location.href = `mailto:${target}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById('successMsg').classList.add('show');
-  document.getElementById('formCard').style.display = 'none';
+
+  // Show celebratory thank-you modal with confetti
+  KK.showSuccessModal({
+    title: 'Message ready to send',
+    message: "We've opened your email app with everything pre-filled. Just hit send and we'll get back to you within 48 hours.",
+    ctaText: 'Got it',
+    confetti: true
+  });
+
+  // Replace form with persistent success state
+  const form = document.getElementById('formCard');
+  if (form) form.style.display = 'none';
+  const success = document.getElementById('successMsg');
+  if (success) success.classList.add('show');
   return false;
 }
-
-const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');io.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale,.fi').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+# Kive Apps — Security disclosure policy
+# https://datatracker.ietf.org/doc/html/rfc9116
+
+Contact: mailto:kive.apps@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://kiveapps.github.io/.well-known/security.txt
+Policy: https://kiveapps.github.io/contact/
+
+# Scope
+# - kiveapps.github.io  (public marketing + encrypted API artifacts)
+# - All published Kive Apps Android applications
+#
+# Out of scope
+# - Third-party platforms (Google Play, GitHub infrastructure)
+# - Reports based purely on automated scanner output without proof of impact
+#
+# Reward
+# - We are an independent project with no formal bounty program. We're
+#   genuinely grateful for responsible reports and will publicly thank you
+#   (with permission) once a fix is shipped.
