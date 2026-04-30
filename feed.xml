@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Kive Apps Blog</title>
+    <link>https://kiveapps.github.io/blog/</link>
+    <description>Essays on privacy, discipline, app craft, and building tools that actually matter.</description>
+    <language>en-IN</language>
+    <copyright>© 2026 Kive Apps. All rights reserved.</copyright>
+    <managingEditor>kive.apps@gmail.com (Kive Apps)</managingEditor>
+    <webMaster>kive.apps@gmail.com (Kive Apps)</webMaster>
+    <pubDate>Wed, 01 Apr 2026 09:00:00 +0530</pubDate>
+    <lastBuildDate>Wed, 01 Apr 2026 09:00:00 +0530</lastBuildDate>
+    <category>Productivity</category>
+    <category>Privacy</category>
+    <category>Engineering</category>
+    <generator>Kive Apps Static Builder</generator>
+    <ttl>60</ttl>
+    <image>
+      <url>https://kiveapps.github.io/icon.png</url>
+      <title>Kive Apps Blog</title>
+      <link>https://kiveapps.github.io/blog/</link>
+    </image>
+    <atom:link href="https://kiveapps.github.io/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Introducing LifeMaster AI — Your Personal Discipline OS</title>
+      <link>https://kiveapps.github.io/blog/introducing-lifemaster-ai/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/introducing-lifemaster-ai/</guid>
+      <pubDate>Wed, 01 Apr 2026 09:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Announcement</category>
+      <description><![CDATA[After months of obsessive building, we shipped LifeMaster AI — a discipline OS for focus, recovery, and growth. Free, offline, no tracking. Here's the story behind why we built it and what's actually inside.]]></description>
+    </item>
+
+    <item>
+      <title>Why Privacy Should Be a Default, Not a Feature</title>
+      <link>https://kiveapps.github.io/blog/privacy-as-default/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/privacy-as-default/</guid>
+      <pubDate>Wed, 25 Mar 2026 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Philosophy</category>
+      <description><![CDATA[In a world of data-hungry apps, here's why we chose zero tracking from day one — and why every app should look at its defaults instead of its policies.]]></description>
+    </item>
+
+    <item>
+      <title>The Art of Building Habits That Actually Stick</title>
+      <link>https://kiveapps.github.io/blog/habits-that-stick/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/habits-that-stick/</guid>
+      <pubDate>Thu, 05 Mar 2026 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Productivity</category>
+      <description><![CDATA[Most people don't fail at habits because they lack willpower — they fail because they tried to install the wrong habit, in the wrong way, at the wrong time. Five things that actually work.]]></description>
+    </item>
+
+    <item>
+      <title>Offline-First: Why Our Apps Work Without the Internet</title>
+      <link>https://kiveapps.github.io/blog/offline-first/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/offline-first/</guid>
+      <pubDate>Wed, 18 Feb 2026 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Engineering</category>
+      <description><![CDATA[Why we ship apps that work on a flight, in a tunnel, in a village with no signal — and the architectural discipline it took to engineer.]]></description>
+    </item>
+
+    <item>
+      <title>The Psychology of Streaks</title>
+      <link>https://kiveapps.github.io/blog/psychology-of-streaks/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/psychology-of-streaks/</guid>
+      <pubDate>Thu, 22 Jan 2026 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Behavioral Science</category>
+      <description><![CDATA[Why day 30 of a habit feels different from day 3 — and how to use that asymmetry to your advantage without becoming its prisoner.]]></description>
+    </item>
+
+    <item>
+      <title>How We Built a Coaching Engine Without Cloud AI</title>
+      <link>https://kiveapps.github.io/blog/coaching-without-cloud-ai/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/coaching-without-cloud-ai/</guid>
+      <pubDate>Mon, 05 Jan 2026 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Engineering</category>
+      <description><![CDATA[The unfashionable truth: most apps don't need cloud AI to feel smart. A 200-item content library with a smart picker beats a 200-billion-parameter model that ships your data to a server.]]></description>
+    </item>
+
+    <item>
+      <title>Building in Public: Our 2025 Year in Review</title>
+      <link>https://kiveapps.github.io/blog/year-in-review-2025/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/year-in-review-2025/</guid>
+      <pubDate>Tue, 30 Dec 2025 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Behind the Scenes</category>
+      <description><![CDATA[What worked, what didn't, and what we learned in our first year as an indie app studio. The honest version, not the polished one.]]></description>
+    </item>
+
+    <item>
+      <title>The Hidden Cost of 'Free' Apps</title>
+      <link>https://kiveapps.github.io/blog/hidden-cost-of-free-apps/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/hidden-cost-of-free-apps/</guid>
+      <pubDate>Fri, 12 Dec 2025 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Investigation</category>
+      <description><![CDATA[A privacy investigation into how "free" productivity apps actually pay their bills. We took 20 of the most popular ones and looked at what they really do.]]></description>
+    </item>
+
+    <item>
+      <title>Focus Is a Skill, Not a Personality Trait</title>
+      <link>https://kiveapps.github.io/blog/focus-as-skill/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/focus-as-skill/</guid>
+      <pubDate>Fri, 28 Nov 2025 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Productivity</category>
+      <description><![CDATA[Focus isn't a personality trait you have or don't. It's a trainable skill — and the training is specific, uncomfortable, and works.]]></description>
+    </item>
+
+    <item>
+      <title>Cold Showers, Cold Mornings: A 30-Day Discipline Experiment</title>
+      <link>https://kiveapps.github.io/blog/cold-shower-experiment/</link>
+      <guid isPermaLink="true">https://kiveapps.github.io/blog/cold-shower-experiment/</guid>
+      <pubDate>Sun, 02 Nov 2025 08:00:00 +0530</pubDate>
+      <dc:creator>Kive Apps</dc:creator>
+      <category>Experiment</category>
+      <description><![CDATA[30 days of voluntary cold showers. Daily logs and the unvarnished verdict — most "biohacking" claims are oversold; the real benefit is something else entirely.]]></description>
+    </item>
+  </channel>
+</rss>
