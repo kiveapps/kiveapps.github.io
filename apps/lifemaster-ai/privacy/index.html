@@ -135,26 +135,22 @@ p:last-child{margin-bottom:0}
 
   <!-- SUMMARY -->
   <div class="summary fi">
-    <p class="sum-title">The simple truth</p>
-    <div class="sum-item">
-      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      We collect nothing about you — ever
-    </div>
-    <div class="sum-item">
-      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      The app never connects to the internet
-    </div>
+    <p class="sum-title">The Short Version</p>
     <div class="sum-item">
       <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       No account or sign-up of any kind
     </div>
     <div class="sum-item">
       <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      Your data lives only on your phone
+      Your personal data lives only on your phone
     </div>
     <div class="sum-item">
       <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      No ads. No tracking. No third-party anything.
+      Internet is used strictly for safe, anonymous app updates (remote config)
+    </div>
+    <div class="sum-item">
+      <div class="sum-tick"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#4DB6AC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      No ads. No tracking. No third-party analytics.
     </div>
   </div>
 
@@ -177,7 +173,7 @@ p:last-child{margin-bottom:0}
       </div>
       <h2>Where does your data live?</h2>
     </div>
-    <p>Everything you add to the app — your goals, habits, daily scores, journal entries, moods, health logs — is saved directly on your phone. It never travels anywhere. It never reaches us. Because we have no servers for it to reach.</p>
+    <p>Everything you add to the app — your goals, habits, daily scores, journal entries, moods, health logs — is saved directly on your phone's local database. It never travels anywhere. It never reaches us. Because we have no servers to receive your personal data.</p>
     <div class="highlight">
       <p>Your personal journey stays personal. No one — not us, not any third party — can ever see what you've written or tracked in LifeMaster AI.</p>
     </div>
@@ -189,9 +185,10 @@ p:last-child{margin-bottom:0}
       <div class="section-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
-      <h2>Does the app go online?</h2>
+      <h2>Why does the app connect to the internet?</h2>
     </div>
-    <p>Never. LifeMaster AI is a fully offline app. It works without Wi-Fi, without mobile data, even in airplane mode. It will never make any kind of internet connection — not when you open it, not in the background, not ever.</p>
+    <p>LifeMaster AI uses the internet <strong>strictly in a one-way, read-only capacity</strong>. The app connects to our secure, encrypted backend (hosted on GitHub Pages) solely to download new configuration files, daily quotes, coaching tips, and emergency kill-switches.</p>
+    <p>When the app connects to fetch these updates, <strong>it sends zero personal data</strong>. It only requests a static file. All core features (journaling, habits, timers) work perfectly offline without any connection.</p>
   </div>
 
   <!-- PERMISSIONS -->
@@ -205,28 +202,36 @@ p:last-child{margin-bottom:0}
     <p style="margin-bottom:14px">Some features need your phone's permission to work. Here's exactly what each one does:</p>
     <div class="perm-list">
       <div class="perm-item">
-        <p class="perm-name">Notifications</p>
-        <p class="perm-desc">Sends you habit reminders, focus session alerts, and your evening reflection prompts at the times you choose. Everything is created on your phone — nothing is sent anywhere.</p>
+        <p class="perm-name">Internet & Network State</p>
+        <p class="perm-desc">Used strictly to securely download remote configuration files (like new daily quotes and app settings) without requiring a full app update. No personal data is sent.</p>
       </div>
       <div class="perm-item">
-        <p class="perm-name">Vibration</p>
-        <p class="perm-desc">Gives you a gentle physical nudge when you complete a task or reach a milestone. Nothing is collected.</p>
+        <p class="perm-name">Camera <span class="opt-badge">Optional</span></p>
+        <p class="perm-desc">Used only if you choose to take a photo for your journal or profile. Photos are saved locally on your device and are never uploaded anywhere.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name">Notifications & Exact Alarms</p>
+        <p class="perm-desc">Sends you habit reminders, focus session alerts, and reflection prompts at the times you choose. Everything is triggered locally by your phone.</p>
+      </div>
+      <div class="perm-item">
+        <p class="perm-name">Vibration & Wake Lock</p>
+        <p class="perm-desc">Gives you a physical nudge when timers end and ensures your alarms ring exactly on time even if the phone is sleeping.</p>
       </div>
       <div class="perm-item">
         <p class="perm-name">Restart after reboot</p>
         <p class="perm-desc">Makes sure your reminders keep working after you restart your phone. No data is involved.</p>
       </div>
       <div class="perm-item">
-        <p class="perm-name">Background timer</p>
-        <p class="perm-desc">Keeps your Focus Timer running while you use other apps, so your session doesn't stop the moment you switch screens.</p>
+        <p class="perm-name">Foreground Service (Background Timer)</p>
+        <p class="perm-desc">Keeps your Focus Timer running accurately while you use other apps, showing a persistent notification so you know it's active.</p>
       </div>
       <div class="perm-item">
-        <p class="perm-name"><span>Screen time insights</span> <span class="opt-badge">Optional</span></p>
-        <p class="perm-desc">If you choose to enable this, the app shows which apps distract you most. This is based entirely on data your phone already has — it never goes anywhere else. You can use the app fully without enabling this.</p>
+        <p class="perm-name"><span>Screen time (Usage Stats)</span> <span class="opt-badge">Optional</span></p>
+        <p class="perm-desc">If you choose to enable the Focus Shield, the app needs to know when you open a distracting app to block it. This data is processed locally and never leaves your device.</p>
       </div>
       <div class="perm-item">
-        <p class="perm-name"><span>Focus Shield</span> <span class="opt-badge">Optional</span></p>
-        <p class="perm-desc">A gentle pause that appears when you open a distracting app you've chosen to limit. Completely optional, completely local to your device. Turn it on or off any time from Settings.</p>
+        <p class="perm-name"><span>Accessibility Service</span> <span class="opt-badge">Optional</span></p>
+        <p class="perm-desc">Used exclusively by the Focus Shield to detect when you launch apps you've asked us to block. We do not observe your screen content or typing.</p>
       </div>
     </div>
   </div>
