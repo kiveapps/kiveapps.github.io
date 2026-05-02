@@ -747,3 +747,49 @@ body.page-ready .pl-4{animation:pageIn .7s var(--ease) .3s both}
   .orb{animation:none}
   .cursor-spot{display:none}
 }
+
+/* -- RICH ARTICLE COMPONENTS -- */
+.article-cover {
+  width: 100%; height: clamp(250px, 40vh, 450px);
+  object-fit: cover; border-radius: var(--r-xl);
+  margin: 0 0 48px; border: 1px solid var(--border);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.3);
+  background: var(--bg-card);
+}
+.article-lead {
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--t1); font-weight: 500;
+  line-height: 1.6; margin-bottom: 40px;
+}
+.drop-cap::first-letter {
+  float: left; font-size: 64px; line-height: 48px;
+  padding-top: 8px; padding-right: 12px; padding-left: 2px;
+  color: var(--accent); font-weight: 900;
+}
+.tldr-box {
+  background: linear-gradient(135deg, rgba(77,182,172,0.05), rgba(255,255,255,0.01));
+  border: 1px solid rgba(77,182,172,0.2);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--r-lg); padding: 24px 32px;
+  margin: 0 0 48px;
+}
+.tldr-box h4 { margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 800; }
+.tldr-box ul { margin: 0; padding-left: 20px; }
+.tldr-box li { margin-bottom: 8px; color: var(--t2); font-size: 15px; line-height: 1.6; }
+.tldr-box li:last-child { margin-bottom: 0; }
+
+.inline-promo {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
+  border: 1px solid var(--border-h);
+  border-radius: var(--r-xl); padding: 40px;
+  margin: 64px 0 16px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.inline-promo::before {
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(circle at 50% 0%, rgba(245,200,66,0.15), transparent 70%); pointer-events: none;
+}
+.inline-promo h4 { font-size: 24px; color: var(--t1); margin-bottom: 12px; font-weight: 800; letter-spacing: -0.02em; position: relative; z-index: 1; }
+.inline-promo p { color: var(--t2); margin-bottom: 24px; font-size: 16px; line-height: 1.6; max-width: 80%; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+.inline-promo .btn { position: relative; z-index: 1; }
+
